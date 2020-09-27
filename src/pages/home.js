@@ -8,6 +8,7 @@ import Demo from "../components/Demo";
 import Hero from "../components/Hero";
 import CommonHero from "../components/CommonHero";
 import Features from "../components/Features";
+import Footer from "../components/Footer";
 import CompletedSVG from "../components/CompletedSVG";
 // stylesheet
 import "../stylesheets/home.css";
@@ -80,6 +81,11 @@ function Home() {
                     your first POS Project with 24/7 Customer Support!"
                     highlighted="waiting for?"
                     btnText="Start Today!"
+                />
+                <Footer
+                    left={["PoSys"]}
+                    center={["About Us", "Contact Us"]}
+                    right={["Social Medias"]}
                 />
             </motion.div>
         </>

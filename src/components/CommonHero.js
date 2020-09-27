@@ -1,5 +1,6 @@
 import React from "react";
 import "../stylesheets/common-hero.css";
+import "../stylesheets/home.css";
 
 function CommonHero(props) {
     const { heading, tagline, highlighted, btnText } = props;
