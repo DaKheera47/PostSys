@@ -4,7 +4,8 @@ import Nav from "./components/Nav";
 import Home from "./pages/home";
 import { Switch, Route } from "react-router";
 import ItemsContextProvider from "./contexts/ItemsContext";
-const Workspace = lazy(() => import("./pages/workspace"));
+// const Workspace = lazy(() => import("./pages/workspace"));
+import Workspace from "./pages/workspace";
 
 function App() {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
@@ -79,20 +80,20 @@ function App() {
 
     return (
         <div className="App">
-            <Suspense fallback={<div>Loading...</div>}>
-                <Switch>
-                    <Route exact path="/">
-                        {landingPageNav}
-                        <Home />
-                    </Route>
-                    <Route exact path="/workspace">
-                        {workspaceNav}
-                        <ItemsContextProvider>
-                            <Workspace />
-                        </ItemsContextProvider>
-                    </Route>
-                </Switch>
-            </Suspense>
+            {/* <Suspense fallback={<div>Loading...</div>}> */}
+            <Switch>
+                <Route exact path="/">
+                    {landingPageNav}
+                    <Home />
+                </Route>
+                <Route exact path="/workspace">
+                    {workspaceNav}
+                    <ItemsContextProvider>
+                        <Workspace />
+                    </ItemsContextProvider>
+                </Route>
+            </Switch>
+            {/* </Suspense> */}
         </div>
     );
 }
