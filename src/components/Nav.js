@@ -65,14 +65,13 @@ function Nav(props) {
                 <div className="right">
                     {right.map((e) =>
                         e.name ? (
-                            <div key={e.name}>
+                            <Fragment key={e.name}>
                                 <li>
                                     <NavLink
                                         exact
                                         key={e.name}
                                         to={e.url}
                                         className="noselect profileName"
-                                        activeClassName="nav-active"
                                     >
                                         {e.name}
                                     </NavLink>
@@ -91,7 +90,7 @@ function Nav(props) {
                                         />
                                     </NavLink>
                                 </li>
-                            </div>
+                            </Fragment>
                         ) : (
                             <Fragment key="auth">
                                 <NavLink
