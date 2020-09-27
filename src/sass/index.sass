@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;500;600&display=swap')
+
+$default-font: 'Montserrat', sans-serif
+
+body 
+    margin: 0
+    padding: 0
+    font-family: $default-font
+    -webkit-font-smoothing: antialiased
+    -moz-osx-font-smoothing: grayscale
+    overflow-x: hidden
+code 
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace
+
+::-webkit-scrollbar 
+    width: 10px
+
+::-webkit-scrollbar-track 
+    background: #515070
+
+::-webkit-scrollbar-thumb 
+    background: #ff8e6e
+    border-radius: 15px
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button 
+    -webkit-appearance: none
+    margin: 0
+
+input[type=number] 
+    -moz-appearance: textfield
+
+.noselect 
+    -webkit-touch-callout: none
+    -webkit-user-select: none
+    -khtml-user-select: none
+    -moz-user-select: none
+    -ms-user-select: none
+    user-select: none
+
+.center-underline
+    display: inline-block
+    vertical-align: middle
+    transform: perspective(1px) translateZ(0)
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0)
+    position: relative
+    overflow: hidden
+    padding: 10px
+    &:before
+        content: ""
+        position: absolute
+        z-index: -1
+        left: 51%
+        right: 51%
+        bottom: 0
+        background: #ffbb91
+        height: 4px
+        transition-property: left, right
+        transition-duration: 0.2s
+        transition-timing-function: ease-out
+    &:hover:before
+        left: 0
+        right: 0
+
+.default-btn
+    border: none
+    background-color: #ff8e6e
+    color: white
+    padding: 5px 15px
+    width: 150px
+    height: 50px
+    font-family: $default-font
+    font-weight: 700
+    font-size: 1.1rem
+    border-radius: 5px
+    transition: 0.2s all ease-out
+    cursor: pointer
+    text-align: center
+    @extend .noselect
+
+    &:hover
+        transform: scale(1.05)
+    &:active
+        transform: scale(0.95)
+
+::selection 
+    color: #ffbb91
+    background: #515070
+
+::-moz-selection 
+    @extend ::selection
