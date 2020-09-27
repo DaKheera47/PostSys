@@ -22,8 +22,7 @@ code
     background: #ff8e6e
     border-radius: 15px
 
-input::-webkit-outer-spin-button,
-input::-webkit-inner-spin-button 
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button 
     -webkit-appearance: none
     margin: 0
 
@@ -88,4 +87,7 @@ input[type=number]
     background: #515070
 
 ::-moz-selection 
+    @extend ::selection
+
+::-webkit-selection
     @extend ::selection

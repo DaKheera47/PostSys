@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import "../stylesheets/nav.css";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Link } from "react-scroll";
+import { Link as Scroll } from "react-scroll";
 
 function Nav(props) {
     const { left, center, right, img, mode } = props;
@@ -29,38 +29,34 @@ function Nav(props) {
                     ))}
                 </div>
 
-                {mode === "scroll" ? (
-                    <div className="center">
-                        {center.map((e) => (
-                            <li key={e.name}>
-                                <Link
-                                    className="noselect navLink"
-                                    to={e.cont}
-                                    spy={true}
-                                    smooth="easeOutQuint"
-                                    offset={-100}
-                                    duration={700}
-                                >
-                                    {e.name}
-                                </Link>
-                            </li>
-                        ))}
-                    </div>
-                ) : (
-                    <div className="center">
-                        {center.map((e) => (
-                            <li key={e.name}>
-                                <NavLink
-                                    key={e.name}
-                                    className="noselect navLink"
-                                    to={e.cont}
-                                >
-                                    {e.name}
-                                </NavLink>
-                            </li>
-                        ))}
-                    </div>
-                )}
+                <div className="center">
+                    {mode === "scroll"
+                        ? center.map((e) => (
+                              <li key={e.name}>
+                                  <Scroll
+                                      className="noselect navLink"
+                                      to={e.cont}
+                                      spy={true}
+                                      smooth="easeOutQuint"
+                                      offset={-100}
+                                      duration={700}
+                                  >
+                                      {e.name}
+                                  </Scroll>
+                              </li>
+                          ))
+                        : center.map((e) => (
+                              <li key={e.name}>
+                                  <NavLink
+                                      key={e.name}
+                                      className="noselect navLink"
+                                      to={e.cont}
+                                  >
+                                      {e.name}
+                                  </NavLink>
+                              </li>
+                          ))}
+                </div>
 
                 <div className="right">
                     {right.map((e) =>
