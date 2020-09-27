@@ -1,26 +1,22 @@
 {
   "files": {
-    "main.css": "/PostSys/static/css/main.9ec3064d.chunk.css",
-    "main.js": "/PostSys/static/js/main.518017e3.chunk.js",
-    "main.js.map": "/PostSys/static/js/main.518017e3.chunk.js.map",
-    "runtime-main.js": "/PostSys/static/js/runtime-main.c69578e8.js",
-    "runtime-main.js.map": "/PostSys/static/js/runtime-main.c69578e8.js.map",
-    "static/js/2.a0988861.chunk.js": "/PostSys/static/js/2.a0988861.chunk.js",
-    "static/js/2.a0988861.chunk.js.map": "/PostSys/static/js/2.a0988861.chunk.js.map",
-    "static/css/3.21a56829.chunk.css": "/PostSys/static/css/3.21a56829.chunk.css",
-    "static/js/3.b6224236.chunk.js": "/PostSys/static/js/3.b6224236.chunk.js",
-    "static/js/3.b6224236.chunk.js.map": "/PostSys/static/js/3.b6224236.chunk.js.map",
+    "main.css": "/PostSys/static/css/main.df20997f.chunk.css",
+    "main.js": "/PostSys/static/js/main.2bb481e6.chunk.js",
+    "main.js.map": "/PostSys/static/js/main.2bb481e6.chunk.js.map",
+    "runtime-main.js": "/PostSys/static/js/runtime-main.8ca0d5dc.js",
+    "runtime-main.js.map": "/PostSys/static/js/runtime-main.8ca0d5dc.js.map",
+    "static/js/2.aa0dbc96.chunk.js": "/PostSys/static/js/2.aa0dbc96.chunk.js",
+    "static/js/2.aa0dbc96.chunk.js.map": "/PostSys/static/js/2.aa0dbc96.chunk.js.map",
     "index.html": "/PostSys/index.html",
-    "precache-manifest.265a8e09cb746a7eee69ea58af96758b.js": "/PostSys/precache-manifest.265a8e09cb746a7eee69ea58af96758b.js",
+    "precache-manifest.efaf3697bd186c785d604d10f773efca.js": "/PostSys/precache-manifest.efaf3697bd186c785d604d10f773efca.js",
     "service-worker.js": "/PostSys/service-worker.js",
-    "static/css/3.21a56829.chunk.css.map": "/PostSys/static/css/3.21a56829.chunk.css.map",
-    "static/css/main.9ec3064d.chunk.css.map": "/PostSys/static/css/main.9ec3064d.chunk.css.map",
-    "static/js/2.a0988861.chunk.js.LICENSE.txt": "/PostSys/static/js/2.a0988861.chunk.js.LICENSE.txt"
+    "static/css/main.df20997f.chunk.css.map": "/PostSys/static/css/main.df20997f.chunk.css.map",
+    "static/js/2.aa0dbc96.chunk.js.LICENSE.txt": "/PostSys/static/js/2.aa0dbc96.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c69578e8.js",
-    "static/js/2.a0988861.chunk.js",
-    "static/css/main.9ec3064d.chunk.css",
-    "static/js/main.518017e3.chunk.js"
+    "static/js/runtime-main.8ca0d5dc.js",
+    "static/js/2.aa0dbc96.chunk.js",
+    "static/css/main.df20997f.chunk.css",
+    "static/js/main.2bb481e6.chunk.js"
   ]
 }
