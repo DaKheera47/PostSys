@@ -2,7 +2,8 @@ import React from "react";
 import "../stylesheets/demo.css";
 import { motion } from "framer-motion";
 
-function Demo() {
+function Demo(props) {
+    // const { headingLeft, headingRight, highlight, }
     return (
         <motion.div
             initial={{ translateY: -1000 }}
@@ -15,7 +16,9 @@ function Demo() {
                     <br />
                     <span>Free Demo </span>Today
                 </h1>
+
                 <button className="default-btn">Free Demo!</button>
+
                 <a href="/" className="block">
                     See Pricing
                 </a>

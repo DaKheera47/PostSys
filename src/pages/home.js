@@ -6,6 +6,7 @@ import ChartSVG from "../components/ChartSVG";
 import Nav from "../components/Nav";
 import Demo from "../components/Demo";
 import Hero from "../components/Hero";
+import CommonHero from "../components/CommonHero";
 import Features from "../components/Features";
 import CompletedSVG from "../components/CompletedSVG";
 // stylesheet
@@ -70,6 +71,15 @@ function Home() {
                         "24/7 Online Support",
                         "Monthly/Yearly Records",
                     ]}
+                />
+
+                <CommonHero
+                    className="common-hero-container"
+                    heading="So, what are you "
+                    tagline="Signup today and get 50% off for a 3 month subscription for
+                    your first POS Project with 24/7 Customer Support!"
+                    highlighted="waiting for?"
+                    btnText="Start Today!"
                 />
             </motion.div>
         </>
