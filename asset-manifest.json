@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/PostSys/static/css/main.9ec3064d.chunk.css",
-    "main.js": "/PostSys/static/js/main.e729ff06.chunk.js",
-    "main.js.map": "/PostSys/static/js/main.e729ff06.chunk.js.map",
+    "main.js": "/PostSys/static/js/main.324a3505.chunk.js",
+    "main.js.map": "/PostSys/static/js/main.324a3505.chunk.js.map",
     "runtime-main.js": "/PostSys/static/js/runtime-main.c69578e8.js",
     "runtime-main.js.map": "/PostSys/static/js/runtime-main.c69578e8.js.map",
     "static/js/2.149dbda2.chunk.js": "/PostSys/static/js/2.149dbda2.chunk.js",
@@ -11,7 +11,7 @@
     "static/js/3.b6224236.chunk.js": "/PostSys/static/js/3.b6224236.chunk.js",
     "static/js/3.b6224236.chunk.js.map": "/PostSys/static/js/3.b6224236.chunk.js.map",
     "index.html": "/PostSys/index.html",
-    "precache-manifest.53f13b85201783f4f4ec27848077bbff.js": "/PostSys/precache-manifest.53f13b85201783f4f4ec27848077bbff.js",
+    "precache-manifest.130ef664ba908f8f183afb9596331161.js": "/PostSys/precache-manifest.130ef664ba908f8f183afb9596331161.js",
     "service-worker.js": "/PostSys/service-worker.js",
     "static/css/3.21a56829.chunk.css.map": "/PostSys/static/css/3.21a56829.chunk.css.map",
     "static/css/main.9ec3064d.chunk.css.map": "/PostSys/static/css/main.9ec3064d.chunk.css.map",
@@ -21,6 +21,6 @@
     "static/js/runtime-main.c69578e8.js",
     "static/js/2.149dbda2.chunk.js",
     "static/css/main.9ec3064d.chunk.css",
-    "static/js/main.e729ff06.chunk.js"
+    "static/js/main.324a3505.chunk.js"
   ]
 }
