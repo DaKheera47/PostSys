@@ -79,6 +79,7 @@ function App() {
 
     return (
         <div className="App">
+            <h2>This shouldnt happen</h2>
             <Suspense fallback={<div>Loading...</div>}>
                 <Switch>
                     <Route exact path="/">
