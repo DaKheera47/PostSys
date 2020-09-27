@@ -13,7 +13,7 @@ function Demo() {
                 <h1>
                     Get Your
                     <br />
-                    <span>Free Demo</span>Today
+                    <span>Free Demo </span>Today
                 </h1>
                 <button className="default-btn">Free Demo!</button>
                 <a href="/" className="block">
