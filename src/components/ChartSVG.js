@@ -1,17 +1,14 @@
 import React from "react";
-import { motion } from "framer-motion";
 
 function ChartSVG() {
     return (
-        <motion.svg
+        <svg
             className="illustration"
             width="600"
             height="379"
             viewBox="0 0 600 379"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
-            initial={{ translateY: -1000 }}
-            animate={{ translateY: 0 }}
         >
             <g clipPath="url(#clip0)">
                 <path
@@ -128,7 +125,7 @@ function ChartSVG() {
                     <rect width="600" height="379" fill="white" />
                 </clipPath>
             </defs>
-        </motion.svg>
+        </svg>
     );
 }
 

@@ -55,7 +55,11 @@ function Home() {
     return (
         <>
             {landingPageNav}
-            <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
+            <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ duration: 0.75 }}
+            >
                 <Hero className="hero-container" />
                 <Demo className="demo-container" />
 

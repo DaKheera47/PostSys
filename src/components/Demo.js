@@ -1,15 +1,9 @@
 import React from "react";
 import "../stylesheets/demo.css";
-import { motion } from "framer-motion";
 
 function Demo(props) {
-    // const { headingLeft, headingRight, highlight, }
     return (
-        <motion.div
-            initial={{ translateY: -1000 }}
-            animate={{ translateY: 0 }}
-            className="demo-container"
-        >
+        <div className="demo-container">
             <div className="sizer">
                 <h1>
                     Get Your
@@ -49,7 +43,7 @@ function Demo(props) {
                     />
                 </svg>
             </div>
-        </motion.div>
+        </div>
     );
 }
 

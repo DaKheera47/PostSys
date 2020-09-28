@@ -101,7 +101,7 @@ function Nav(props) {
                                     className="sign-up"
                                     key="signup"
                                 >
-                                    Sign Up
+                                    Register
                                 </NavLink>
                             </Fragment>
                         )
