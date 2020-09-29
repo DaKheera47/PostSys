@@ -3,16 +3,14 @@ import "../stylesheets/nav.css";
 import { NavLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Link as Scroll } from "react-scroll";
+import { useAuth0 } from "@auth0/auth0-react";
 
 function Nav(props) {
-    const { left, center, right, img, mode } = props;
+    const { left, center, right, img } = props;
+    const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
     return (
-        <motion.nav
-            initial={{ translateY: -100 }}
-            animate={{ translateY: 0 }}
-            className="sticky"
-        >
+        <motion.nav initial={{ translateY: -100 }} animate={{ translateY: 0 }} className="sticky">
             <ul>
                 <div className="left">
                     {left.map((e) => (
@@ -44,11 +42,7 @@ function Nav(props) {
                                     {e.name}
                                 </Scroll>
                             ) : (
-                                <NavLink
-                                    className="noselect navLink"
-                                    exact
-                                    to={e.url}
-                                >
+                                <NavLink className="noselect navLink" exact to={e.url}>
                                     {e.name}
                                 </NavLink>
                             )}
@@ -58,49 +52,49 @@ function Nav(props) {
 
                 <div className="right">
                     {right.map((e) =>
-                        e.name ? (
-                            <Fragment key={e.name}>
+                        isAuthenticated ? (
+                            <Fragment key={user.name}>
                                 <li>
-                                    <NavLink
+                                    <a
                                         exact
+                                        onClick={() =>
+                                            logout({
+                                                returnTo: window.location.origin,
+                                            })
+                                        }
                                         key={e.name}
                                         to={e.url}
                                         className="noselect profileName navLink"
                                     >
-                                        {e.name}
-                                    </NavLink>
+                                        Sign out from {user.name}
+                                    </a>
                                 </li>
                                 <li>
-                                    <NavLink
-                                        exact
-                                        to="/workspace"
-                                        key={e.name}
-                                        className="noselect"
-                                    >
+                                    <a exact to="/workspace" key={e.name} className="noselect">
                                         <img
-                                            src={img}
+                                            src={user.picture}
                                             alt="Profile"
                                             className="profileUrl"
                                         />
-                                    </NavLink>
+                                    </a>
                                 </li>
                             </Fragment>
                         ) : (
                             <Fragment key="auth">
-                                <NavLink
-                                    to="/signup"
+                                <a
                                     className="sign-in"
                                     key="signin"
+                                    onClick={() => loginWithRedirect()}
                                 >
                                     Sign In
-                                </NavLink>
-                                <NavLink
-                                    to="/signup"
+                                </a>
+                                <a
                                     className="sign-up"
                                     key="signup"
+                                    onClick={() => loginWithRedirect()}
                                 >
                                     Register
-                                </NavLink>
+                                </a>
                             </Fragment>
                         )
                     )}
