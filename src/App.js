@@ -4,22 +4,28 @@ import Home from "./pages/home";
 import MobileHome from "./mobile-pages/MobileHome";
 import { Switch, Route, Redirect } from "react-router";
 import ItemsContextProvider from "./contexts/ItemsContext";
+import { useAuth0 } from "@auth0/auth0-react";
 import { BrowserView, MobileView } from "react-device-detect";
 const Workspace = lazy(() => import("./pages/workspace"));
 
 function App() {
+    const { isAuthenticated } = useAuth0();
+
     return (
         <div className="App">
             <BrowserView>
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route exact path="/">
-                            <Home />
+                            {!isAuthenticated ? <Home /> : <Redirect to="/workspace" />}
                         </Route>
                         <Route exact path="/workspace">
                             <ItemsContextProvider>
-                                <Workspace />
+                                {isAuthenticated ? <Workspace /> : <Redirect to="/" />}
                             </ItemsContextProvider>
+                        </Route>
+                        <Route>
+                            <Redirect to="/" />
                         </Route>
                     </Switch>
                 </Suspense>
@@ -29,10 +35,10 @@ function App() {
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route exact path="/">
-                            <MobileHome />
+                            {!isAuthenticated ? <MobileHome /> : <MobileHome />}
                         </Route>
 
-                        <Route exact path="/workspace">
+                        <Route>
                             <Redirect to="/" />
                         </Route>
                     </Switch>

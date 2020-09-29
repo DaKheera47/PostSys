@@ -6,7 +6,7 @@ import { Link as Scroll } from "react-scroll";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Nav(props) {
-    const { left, center, right, img } = props;
+    const { left, center, right } = props;
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
     return (
