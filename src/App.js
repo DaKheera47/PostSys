@@ -18,10 +18,12 @@ function App() {
                     <Switch>
                         <Route exact path="/">
                             {!isAuthenticated ? <Home /> : <Redirect to="/workspace" />}
+                            {/* <Home /> */}
                         </Route>
                         <Route exact path="/workspace">
                             <ItemsContextProvider>
                                 {isAuthenticated ? <Workspace /> : <Redirect to="/" />}
+                                {/* <Workspace /> */}
                             </ItemsContextProvider>
                         </Route>
                         <Route>

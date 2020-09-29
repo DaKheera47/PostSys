@@ -1,9 +1,10 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import "../stylesheets/maintable.css";
 import { motion } from "framer-motion";
 
 function MainTable(props) {
-    let { items: allItems, setItems: setAllItems } = props;
+    let { items: allItems, setItems: setAllItems, onTotalChange } = props;
+    const [totalCost, setTotalCost] = useState(0);
     const [sortConfig, setSortConfig] = useState([...allItems]);
     const [itemIdForm, setItemIdForm] = useState("");
     const [itemUnitsForm, setItemUnitsForm] = useState(1);
@@ -11,27 +12,27 @@ function MainTable(props) {
     const [allColumns, setAllColumns] = useState([
         {
             recognizer: "itemID",
-            cssClassName: "th-id heading",
+            cssClassName: "th-id",
             display: "Item ID",
         },
         {
             recognizer: "itemName",
-            cssClassName: "th-name heading",
+            cssClassName: "th-name",
             display: "Item Name/Description",
         },
         {
             recognizer: "qty",
-            cssClassName: "th-qty heading",
+            cssClassName: "th-qty",
             display: "Units",
         },
         {
             recognizer: "unitPrice",
-            cssClassName: "th-unitPrice heading",
+            cssClassName: "th-unitPrice",
             display: "Unit Price",
         },
         {
             recognizer: "totalPrice",
-            cssClassName: "th-totalPrice heading",
+            cssClassName: "th-totalPrice",
             display: "Total Price",
         },
     ]);
@@ -54,6 +55,7 @@ function MainTable(props) {
             />
         </motion.svg>
     );
+
     const arrowUp = (
         <motion.svg
             width="15"
@@ -115,6 +117,7 @@ function MainTable(props) {
             case "UnitsInput":
                 setItemUnitsForm(e.target.value);
                 break;
+
             default:
                 setItemIdForm(e.target.value);
                 setItemUnitsForm(e.target.value);
@@ -128,27 +131,22 @@ function MainTable(props) {
                 let count = 1;
 
                 // counting occurances of new item
-                currentItems.map((item) =>
-                    item.itemID === Number(itemIdForm) ? count++ : null
-                );
-
-                console.log(count);
+                currentItems.map((item) => (item.itemID === Number(itemIdForm) ? count++ : null));
 
                 if (count <= 1) {
                     // changing current display items
                     allItems.map((item) => {
                         if (item.itemID === Number(itemIdForm)) {
                             // adding new item
-                            setCurrentItems([
+                            setCurrentItems((p) => [
                                 {
                                     itemID: Number(itemIdForm),
                                     qty: Number(itemUnitsForm),
                                     itemName: item.itemName,
                                     unitPrice: item.unitPrice,
-                                    totalPrice:
-                                        item.unitPrice * Number(itemUnitsForm),
+                                    totalPrice: item.unitPrice * Number(itemUnitsForm),
                                 },
-                                ...currentItems,
+                                ...p,
                             ]);
 
                             // resetting value back to empty after changes
@@ -161,7 +159,7 @@ function MainTable(props) {
                     currentItems.map((item) => {
                         if (item.itemID === Number(itemIdForm)) {
                             item.qty = item.qty + Number(itemUnitsForm);
-                            item.totalPrice = item.unitPrice * Number(item.qty);
+                            item.totalPrice = (item.unitPrice * Number(item.qty)).toFixed(2);
                             // resetting value back to empty after changes
                             setItemIdForm("");
                             setItemUnitsForm(1);
@@ -172,8 +170,21 @@ function MainTable(props) {
         }
     };
 
+    // adding total value to variable as soon as currentItems changes
+    useEffect(() => {
+        setTotalCost(0);
+        currentItems.map((item) => {
+            setTotalCost((p) => p + item.totalPrice);
+            console.log(item);
+        });
+    }, [currentItems, itemUnitsForm, itemIdForm]);
+
+    useEffect(() => {
+        onTotalChange(totalCost);
+    }, [totalCost]);
+
     return (
-        <table>
+        <table className="MainTable">
             <thead>
                 <tr className="noselect header">
                     {allColumns.map((column) => (
@@ -235,6 +246,7 @@ function MainTable(props) {
                     </tr>
                 )}
             </tbody>
+            <h1>{totalCost}</h1>
         </table>
     );
 }

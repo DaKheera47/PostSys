@@ -1,11 +1,14 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import MainTable from "../components/MainTable";
+import ReceiptBar from "../components/ReceiptBar";
 import { motion } from "framer-motion";
 import { ItemContext } from "../contexts/ItemsContext";
 import Nav from "../components/Nav";
 
 function Workspace() {
     const [items, setItems] = useContext(ItemContext);
+
+    const [total, setTotal] = useState(0);
 
     useEffect(() => {
         document.title = "Workspace | Postsys";
@@ -39,11 +42,17 @@ function Workspace() {
         />
     );
 
+    const onTotalChange = (total) => {
+        console.log(total);
+        setTotal(total);
+    };
+
     return (
         <>
             {workspaceNav}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                <MainTable items={items} setItems={setItems} />
+                <MainTable items={items} setItems={setItems} onTotalChange={onTotalChange} />
+                <ReceiptBar total={total} />
             </motion.div>
         </>
     );
