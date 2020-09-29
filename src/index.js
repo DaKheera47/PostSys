@@ -8,12 +8,14 @@ import { HashRouter } from "react-router-dom";
 const domain = process.env.REACT_APP_DOMAIN;
 const clientId = process.env.REACT_APP_CLIENT_ID;
 
+let redirectURI = "https://dakheera47.github.io/PostSys/#/workspace";
+
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
     // dev code
-    const redirectURI = "http://localhost:3000/#/workspace";
+    redirectURI = "http://localhost:3000/#/workspace";
 } else {
     // production code
-    const redirectURI = "https://dakheera47.github.io/PostSys/#/workspace";
+    redirectURI = "https://dakheera47.github.io/PostSys/#/workspace";
 }
 
 ReactDOM.render(
