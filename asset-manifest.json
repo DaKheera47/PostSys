@@ -1,26 +1,26 @@
 {
   "files": {
     "main.css": "/PostSys/static/css/main.0a509f28.chunk.css",
-    "main.js": "/PostSys/static/js/main.3fbf4127.chunk.js",
-    "main.js.map": "/PostSys/static/js/main.3fbf4127.chunk.js.map",
-    "runtime-main.js": "/PostSys/static/js/runtime-main.44ab28a2.js",
-    "runtime-main.js.map": "/PostSys/static/js/runtime-main.44ab28a2.js.map",
-    "static/js/2.930087fe.chunk.js": "/PostSys/static/js/2.930087fe.chunk.js",
-    "static/js/2.930087fe.chunk.js.map": "/PostSys/static/js/2.930087fe.chunk.js.map",
+    "main.js": "/PostSys/static/js/main.4355077a.chunk.js",
+    "main.js.map": "/PostSys/static/js/main.4355077a.chunk.js.map",
+    "runtime-main.js": "/PostSys/static/js/runtime-main.18e8932a.js",
+    "runtime-main.js.map": "/PostSys/static/js/runtime-main.18e8932a.js.map",
+    "static/js/2.dd761553.chunk.js": "/PostSys/static/js/2.dd761553.chunk.js",
+    "static/js/2.dd761553.chunk.js.map": "/PostSys/static/js/2.dd761553.chunk.js.map",
     "static/css/3.49f3550b.chunk.css": "/PostSys/static/css/3.49f3550b.chunk.css",
-    "static/js/3.9bd642c8.chunk.js": "/PostSys/static/js/3.9bd642c8.chunk.js",
-    "static/js/3.9bd642c8.chunk.js.map": "/PostSys/static/js/3.9bd642c8.chunk.js.map",
+    "static/js/3.b6563c83.chunk.js": "/PostSys/static/js/3.b6563c83.chunk.js",
+    "static/js/3.b6563c83.chunk.js.map": "/PostSys/static/js/3.b6563c83.chunk.js.map",
     "index.html": "/PostSys/index.html",
-    "precache-manifest.bcef21b36df1d483271069339550de75.js": "/PostSys/precache-manifest.bcef21b36df1d483271069339550de75.js",
+    "precache-manifest.d02fd888e37d3cdb56b60504556758be.js": "/PostSys/precache-manifest.d02fd888e37d3cdb56b60504556758be.js",
     "service-worker.js": "/PostSys/service-worker.js",
     "static/css/3.49f3550b.chunk.css.map": "/PostSys/static/css/3.49f3550b.chunk.css.map",
     "static/css/main.0a509f28.chunk.css.map": "/PostSys/static/css/main.0a509f28.chunk.css.map",
-    "static/js/2.930087fe.chunk.js.LICENSE.txt": "/PostSys/static/js/2.930087fe.chunk.js.LICENSE.txt"
+    "static/js/2.dd761553.chunk.js.LICENSE.txt": "/PostSys/static/js/2.dd761553.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.44ab28a2.js",
-    "static/js/2.930087fe.chunk.js",
+    "static/js/runtime-main.18e8932a.js",
+    "static/js/2.dd761553.chunk.js",
     "static/css/main.0a509f28.chunk.css",
-    "static/js/main.3fbf4127.chunk.js"
+    "static/js/main.4355077a.chunk.js"
   ]
 }
