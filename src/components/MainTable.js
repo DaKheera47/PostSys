@@ -173,10 +173,7 @@ function MainTable(props) {
     };
 
     return (
-        <motion.table
-            initial={{ translateX: -500 }}
-            animate={{ translateX: 0 }}
-        >
+        <table>
             <thead>
                 <tr className="noselect header">
                     {allColumns.map((column) => (
@@ -238,7 +235,7 @@ function MainTable(props) {
                     </tr>
                 )}
             </tbody>
-        </motion.table>
+        </table>
     );
 }
 

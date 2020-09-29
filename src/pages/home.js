@@ -25,13 +25,20 @@ function Home() {
             mode="scroll"
             left={["PostSys"]}
             center={[
-                { name: "Home", url: "/", cont: "hero-container" },
                 {
+                    type: "scroll",
+                    name: "Home",
+                    url: "/",
+                    cont: "hero-container",
+                },
+                {
+                    type: "scroll",
                     name: "Features",
                     url: "/features",
                     cont: "feature-container",
                 },
                 {
+                    type: "link",
                     name: "Projects",
                     url: "/workspace",
                     cont: "feature-container",

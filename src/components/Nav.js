@@ -30,32 +30,30 @@ function Nav(props) {
                 </div>
 
                 <div className="center">
-                    {mode === "scroll"
-                        ? center.map((e) => (
-                              <li key={e.name}>
-                                  <Scroll
-                                      className="noselect navLink"
-                                      to={e.cont}
-                                      spy={true}
-                                      smooth="easeOutQuint"
-                                      offset={-100}
-                                      duration={700}
-                                  >
-                                      {e.name}
-                                  </Scroll>
-                              </li>
-                          ))
-                        : center.map((e) => (
-                              <li key={e.name}>
-                                  <NavLink
-                                      key={e.name}
-                                      className="noselect navLink"
-                                      to={e.cont}
-                                  >
-                                      {e.name}
-                                  </NavLink>
-                              </li>
-                          ))}
+                    {center.map((e) => (
+                        <li key={e.name}>
+                            {e.type === "scroll" ? (
+                                <Scroll
+                                    className="noselect navLink"
+                                    to={e.cont}
+                                    spy={true}
+                                    smooth="easeOutQuint"
+                                    offset={-100}
+                                    duration={700}
+                                >
+                                    {e.name}
+                                </Scroll>
+                            ) : (
+                                <NavLink
+                                    className="noselect navLink"
+                                    exact
+                                    to={e.url}
+                                >
+                                    {e.name}
+                                </NavLink>
+                            )}
+                        </li>
+                    ))}
                 </div>
 
                 <div className="right">
@@ -67,7 +65,7 @@ function Nav(props) {
                                         exact
                                         key={e.name}
                                         to={e.url}
-                                        className="noselect profileName"
+                                        className="noselect profileName navLink"
                                     >
                                         {e.name}
                                     </NavLink>
