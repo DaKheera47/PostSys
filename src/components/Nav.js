@@ -6,6 +6,15 @@ import { Link as Scroll } from "react-scroll";
 import { useAuth0 } from "@auth0/auth0-react";
 
 function Nav(props) {
+    let logoutURL = "";
+    if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
+        // dev code
+        logoutURL = "http://localhost:3000/#/";
+    } else {
+        // production code
+        logoutURL = "https://dakheera47.github.io/PostSys/#/";
+    }
+
     const { left, center, right } = props;
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
@@ -59,7 +68,7 @@ function Nav(props) {
                                         exact
                                         onClick={() =>
                                             logout({
-                                                returnTo: window.location.origin,
+                                                returnTo: logoutURL,
                                             })
                                         }
                                         key={e.name}

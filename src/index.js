@@ -17,6 +17,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
     // production code
     redirectURI = "https://dakheera47.github.io/PostSys/#/workspace";
 }
+
 console.log(redirectURI);
 ReactDOM.render(
     <Auth0Provider domain={domain} clientId={clientId} redirectUri={redirectURI}>
