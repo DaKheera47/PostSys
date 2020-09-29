@@ -8,7 +8,7 @@ import { HashRouter } from "react-router-dom";
 const domain = process.env.REACT_APP_DOMAIN;
 const clientId = process.env.REACT_APP_CLIENT_ID;
 
-let redirectURI = "https://dakheera47.github.io/PostSys/#/workspace";
+let redirectURI = "";
 
 if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
     // dev code
@@ -17,7 +17,7 @@ if (!process.env.NODE_ENV || process.env.NODE_ENV === "development") {
     // production code
     redirectURI = "https://dakheera47.github.io/PostSys/#/workspace";
 }
-
+console.log(redirectURI);
 ReactDOM.render(
     <Auth0Provider domain={domain} clientId={clientId} redirectUri={redirectURI}>
         <HashRouter>
