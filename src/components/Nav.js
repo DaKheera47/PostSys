@@ -64,46 +64,37 @@ function Nav(props) {
                         isAuthenticated ? (
                             <Fragment key={user.name}>
                                 <li>
-                                    <a
-                                        exact
+                                    <button
                                         onClick={() =>
                                             logout({
                                                 returnTo: logoutURL,
                                             })
                                         }
-                                        key={e.name}
-                                        to={e.url}
                                         className="noselect profileName navLink"
                                     >
                                         Sign out from {user.name}
-                                    </a>
+                                    </button>
                                 </li>
                                 <li>
-                                    <a exact to="/workspace" key={e.name} className="noselect">
-                                        <img
-                                            src={user.picture}
-                                            alt="Profile"
-                                            className="profileUrl"
-                                        />
-                                    </a>
+                                    <img src={user.picture} alt="Profile" className="profileUrl" />
                                 </li>
                             </Fragment>
                         ) : (
                             <Fragment key="auth">
-                                <a
+                                <button
                                     className="sign-in"
                                     key="signin"
                                     onClick={() => loginWithRedirect()}
                                 >
                                     Sign In
-                                </a>
-                                <a
+                                </button>
+                                <button
                                     className="sign-up"
                                     key="signup"
                                     onClick={() => loginWithRedirect()}
                                 >
                                     Register
-                                </a>
+                                </button>
                             </Fragment>
                         )
                     )}

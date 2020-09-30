@@ -3,13 +3,13 @@ import "../stylesheets/maintable.css";
 import { motion } from "framer-motion";
 
 function MainTable(props) {
-    let { items: allItems, setItems: setAllItems, onTotalChange } = props;
+    let { items: allItems, onTotalChange } = props;
     const [totalCost, setTotalCost] = useState(0);
     const [sortConfig, setSortConfig] = useState([...allItems]);
     const [itemIdForm, setItemIdForm] = useState("");
     const [itemUnitsForm, setItemUnitsForm] = useState(1);
     const [currentItems, setCurrentItems] = useState([]);
-    const [allColumns, setAllColumns] = useState([
+    const [allColumns] = useState([
         {
             recognizer: "itemID",
             cssClassName: "th-id",
@@ -94,7 +94,7 @@ function MainTable(props) {
             return 0;
         });
         return currentItems;
-    }, [sortConfig]);
+    }, [sortConfig, currentItems]);
 
     // making the rows of items
     const itemTRS = currentItems.map((item) => (
@@ -135,7 +135,7 @@ function MainTable(props) {
 
                 if (count <= 1) {
                     // changing current display items
-                    allItems.map((item) => {
+                    allItems.forEach((item) => {
                         if (item.itemID === Number(itemIdForm)) {
                             // adding new item
                             setCurrentItems((p) => [
@@ -156,7 +156,7 @@ function MainTable(props) {
                     });
                 } else {
                     // checking if item code already exists. if it does, add the quantity to the previous value
-                    currentItems.map((item) => {
+                    currentItems.forEach((item) => {
                         if (item.itemID === Number(itemIdForm)) {
                             item.qty = item.qty + Number(itemUnitsForm);
                             item.totalPrice = parseFloat(
@@ -175,7 +175,7 @@ function MainTable(props) {
     // adding total value to variable as soon as currentItems changes
     useEffect(() => {
         setTotalCost(0);
-        currentItems.map((item) => {
+        currentItems.forEach((item) => {
             setTotalCost((p) => p + item.totalPrice);
             console.log(item);
         });
@@ -185,7 +185,7 @@ function MainTable(props) {
         if (+totalCost) {
             onTotalChange(totalCost);
         }
-    }, [totalCost]);
+    }, [totalCost, onTotalChange]);
 
     return (
         <table className="MainTable">

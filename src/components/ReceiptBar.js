@@ -49,33 +49,33 @@ function ReceiptBar({ total, grandTotal }) {
                 <AnimatePresence>
                     {change >= 0 ? (pre = "Change - Rs.") : (pre = "Add Rs.")}
                     {change >= 0 ? (
-                        <motion.p
+                        <motion.span
                             initial={{ translateY: 25, opacity: 0 }}
                             animate={{ translateY: 0, opacity: 1 }}
-                            transition={{ duration: 0.25 }}
                             exit={{ translateY: 25, opacity: 0 }}
                             transition={{ duration: 0.25 }}
+                            className="rb-change-text"
                         >
                             <TextTransition
                                 text={`${pre} ${change}`}
                                 springConfig={presets.wobbly}
                                 inline
                             />
-                        </motion.p>
+                        </motion.span>
                     ) : (
-                        <motion.p
+                        <motion.span
                             initial={{ translateY: 25, opacity: 0 }}
                             animate={{ translateY: 0, opacity: 1 }}
                             transition={{ duration: 0.25 }}
                             exit={{ translateY: 25, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
+                            className="rb-change-text"
                         >
                             <TextTransition
                                 text={`${pre} ${Math.abs(change)}`}
                                 springConfig={presets.wobbly}
-                                inline
+                                // inline
                             />
-                        </motion.p>
+                        </motion.span>
                     )}
                 </AnimatePresence>
             </div>
