@@ -6,6 +6,7 @@ import TextTransition, { presets } from "react-text-transition";
 function ReceiptBar({ total, grandTotal }) {
     const [change, setChange] = useState(0);
     const [payment, setPayment] = useState("");
+    let pre = "";
 
     function isNumeric(n) {
         return !isNaN(parseFloat(n)) && isFinite(n);
@@ -44,10 +45,10 @@ function ReceiptBar({ total, grandTotal }) {
                     className="rb-payment-input"
                     onChange={handlePaymentInput}
                     value={payment}
-                    pattern="\d+"
                 />
                 <AnimatePresence>
-                    {change ? (
+                    {change >= 0 ? (pre = "Change - Rs.") : (pre = "Add Rs.")}
+                    {change >= 0 ? (
                         <motion.p
                             initial={{ translateY: 25, opacity: 0 }}
                             animate={{ translateY: 0, opacity: 1 }}
@@ -56,11 +57,26 @@ function ReceiptBar({ total, grandTotal }) {
                             transition={{ duration: 0.25 }}
                         >
                             <TextTransition
-                                text={"Change - Rs. " + change}
+                                text={`${pre} ${change}`}
                                 springConfig={presets.wobbly}
+                                inline
                             />
                         </motion.p>
-                    ) : null}
+                    ) : (
+                        <motion.p
+                            initial={{ translateY: 25, opacity: 0 }}
+                            animate={{ translateY: 0, opacity: 1 }}
+                            transition={{ duration: 0.25 }}
+                            exit={{ translateY: 25, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                        >
+                            <TextTransition
+                                text={`${pre} ${Math.abs(change)}`}
+                                springConfig={presets.wobbly}
+                                inline
+                            />
+                        </motion.p>
+                    )}
                 </AnimatePresence>
             </div>
         </div>
