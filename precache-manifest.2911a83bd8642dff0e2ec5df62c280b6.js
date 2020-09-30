@@ -1,14 +1,14 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "8ef12e548d2e8bc56c97063497c6d5cf",
+    "revision": "acfc06a30ecefd96e4f62c367097f2a8",
     "url": "/PostSys/index.html"
   },
   {
-    "revision": "bdd47cb62d63bf7b824d",
-    "url": "/PostSys/static/css/4.2488d6b5.chunk.css"
+    "revision": "6b34d477f2150520e193",
+    "url": "/PostSys/static/css/4.333fbf26.chunk.css"
   },
   {
-    "revision": "606a9677093422220d27",
+    "revision": "d454468661724452ebc0",
     "url": "/PostSys/static/css/main.c1eb6038.chunk.css"
   },
   {
@@ -24,15 +24,15 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/PostSys/static/js/3.605d1fba.chunk.js"
   },
   {
-    "revision": "bdd47cb62d63bf7b824d",
-    "url": "/PostSys/static/js/4.f36b3431.chunk.js"
+    "revision": "6b34d477f2150520e193",
+    "url": "/PostSys/static/js/4.736a3f69.chunk.js"
   },
   {
-    "revision": "606a9677093422220d27",
-    "url": "/PostSys/static/js/main.156c9c48.chunk.js"
+    "revision": "d454468661724452ebc0",
+    "url": "/PostSys/static/js/main.b7ac5c5a.chunk.js"
   },
   {
-    "revision": "9c05b3e01b41dadd6b9c",
-    "url": "/PostSys/static/js/runtime-main.d2280ad8.js"
+    "revision": "c095cf2c31d33085ad7e",
+    "url": "/PostSys/static/js/runtime-main.e1f318a0.js"
   }
 ]);
