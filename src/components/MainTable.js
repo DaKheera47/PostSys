@@ -159,7 +159,9 @@ function MainTable(props) {
                     currentItems.map((item) => {
                         if (item.itemID === Number(itemIdForm)) {
                             item.qty = item.qty + Number(itemUnitsForm);
-                            item.totalPrice = (item.unitPrice * Number(item.qty)).toFixed(2);
+                            item.totalPrice = parseFloat(
+                                (item.unitPrice * Number(item.qty)).toFixed(2)
+                            );
                             // resetting value back to empty after changes
                             setItemIdForm("");
                             setItemUnitsForm(1);
@@ -180,7 +182,9 @@ function MainTable(props) {
     }, [currentItems, itemUnitsForm, itemIdForm]);
 
     useEffect(() => {
-        onTotalChange(totalCost);
+        if (+totalCost) {
+            onTotalChange(totalCost);
+        }
     }, [totalCost]);
 
     return (
@@ -246,7 +250,6 @@ function MainTable(props) {
                     </tr>
                 )}
             </tbody>
-            <h1>{totalCost}</h1>
         </table>
     );
 }

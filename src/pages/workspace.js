@@ -9,6 +9,7 @@ function Workspace() {
     const [items, setItems] = useContext(ItemContext);
 
     const [total, setTotal] = useState(0);
+    const [grandTotal, setGrandTotal] = useState(0);
 
     useEffect(() => {
         document.title = "Workspace | Postsys";
@@ -44,7 +45,8 @@ function Workspace() {
 
     const onTotalChange = (total) => {
         console.log(total);
-        setTotal(total);
+        setTotal(parseFloat(total.toFixed(2)));
+        setGrandTotal(parseFloat((total * 1.05).toFixed(2)));
     };
 
     return (
@@ -52,7 +54,7 @@ function Workspace() {
             {workspaceNav}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <MainTable items={items} setItems={setItems} onTotalChange={onTotalChange} />
-                <ReceiptBar total={total} />
+                <ReceiptBar total={total} grandTotal={grandTotal} />
             </motion.div>
         </>
     );

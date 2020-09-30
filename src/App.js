@@ -17,13 +17,13 @@ function App() {
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route exact path="/">
-                            {!isAuthenticated ? <Home /> : <Redirect to="/workspace" />}
-                            {/* <Home /> */}
+                            {/* {!isAuthenticated ? <Home /> : <Redirect to="/workspace" />} */}
+                            <Home />
                         </Route>
                         <Route exact path="/workspace">
                             <ItemsContextProvider>
-                                {isAuthenticated ? <Workspace /> : <Redirect to="/" />}
-                                {/* <Workspace /> */}
+                                {/* {isAuthenticated ? <Workspace /> : <Redirect to="/" />} */}
+                                <Workspace />
                             </ItemsContextProvider>
                         </Route>
                         <Route>
