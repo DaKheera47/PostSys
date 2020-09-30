@@ -28,7 +28,13 @@ function ReceiptBar({ total, grandTotal }) {
                 <p>Receipt No. 5432</p>
             </div>
 
-            <h1 className="rb-cost-text">Rs. {grandTotal}</h1>
+            <h1 className="rb-cost-text">
+                <TextTransition
+                    text={`Rs. ${grandTotal}`}
+                    springConfig={{ mass: 1, tension: 120, friction: 14 }}
+                    className="rb-text"
+                />
+            </h1>
 
             <div className="rb-gst-container">
                 <p>Gross Total - Rs. {total}</p>
@@ -59,7 +65,6 @@ function ReceiptBar({ total, grandTotal }) {
                             <TextTransition
                                 text={`${pre} ${change}`}
                                 springConfig={presets.wobbly}
-                                inline
                             />
                         </motion.span>
                     ) : (
@@ -73,7 +78,6 @@ function ReceiptBar({ total, grandTotal }) {
                             <TextTransition
                                 text={`${pre} ${Math.abs(change)}`}
                                 springConfig={presets.wobbly}
-                                // inline
                             />
                         </motion.span>
                     )}
