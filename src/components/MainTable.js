@@ -223,7 +223,7 @@ function MainTable(props) {
                             value={itemIdForm}
                         />
                     </td>
-                    <td></td>
+                    <td className="td-name"></td>
                     <td>
                         <input
                             type="number"
@@ -235,20 +235,10 @@ function MainTable(props) {
                             value={itemUnitsForm}
                         />
                     </td>
-                    <td></td>
-                    <td></td>
+                    <td className="td-price"></td>
+                    <td className="td-price"></td>
                 </tr>
-                {itemTRS.length !== 0 ? (
-                    itemTRS
-                ) : (
-                    <tr>
-                        <td className="td-id"></td>
-                        <td className="td-name"></td>
-                        <td className="td-qty"></td>
-                        <td className="td-price"></td>
-                        <td className="td-price"></td>
-                    </tr>
-                )}
+                {itemTRS.length !== 0 ? itemTRS : null}
             </tbody>
         </table>
     );
