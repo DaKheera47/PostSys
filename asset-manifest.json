@@ -1,26 +1,28 @@
 {
   "files": {
     "main.css": "/PostSys/static/css/main.0a509f28.chunk.css",
-    "main.js": "/PostSys/static/js/main.6a53256e.chunk.js",
-    "main.js.map": "/PostSys/static/js/main.6a53256e.chunk.js.map",
-    "runtime-main.js": "/PostSys/static/js/runtime-main.c02f6ec0.js",
-    "runtime-main.js.map": "/PostSys/static/js/runtime-main.c02f6ec0.js.map",
-    "static/js/2.930087fe.chunk.js": "/PostSys/static/js/2.930087fe.chunk.js",
-    "static/js/2.930087fe.chunk.js.map": "/PostSys/static/js/2.930087fe.chunk.js.map",
-    "static/css/3.624d1f7c.chunk.css": "/PostSys/static/css/3.624d1f7c.chunk.css",
-    "static/js/3.9c26db2a.chunk.js": "/PostSys/static/js/3.9c26db2a.chunk.js",
-    "static/js/3.9c26db2a.chunk.js.map": "/PostSys/static/js/3.9c26db2a.chunk.js.map",
+    "main.js": "/PostSys/static/js/main.76a7f320.chunk.js",
+    "main.js.map": "/PostSys/static/js/main.76a7f320.chunk.js.map",
+    "runtime-main.js": "/PostSys/static/js/runtime-main.237a8f14.js",
+    "runtime-main.js.map": "/PostSys/static/js/runtime-main.237a8f14.js.map",
+    "static/js/2.09aa23cf.chunk.js": "/PostSys/static/js/2.09aa23cf.chunk.js",
+    "static/js/2.09aa23cf.chunk.js.map": "/PostSys/static/js/2.09aa23cf.chunk.js.map",
+    "static/js/3.2a84eea7.chunk.js": "/PostSys/static/js/3.2a84eea7.chunk.js",
+    "static/js/3.2a84eea7.chunk.js.map": "/PostSys/static/js/3.2a84eea7.chunk.js.map",
+    "static/css/4.f33469ed.chunk.css": "/PostSys/static/css/4.f33469ed.chunk.css",
+    "static/js/4.6c48c17c.chunk.js": "/PostSys/static/js/4.6c48c17c.chunk.js",
+    "static/js/4.6c48c17c.chunk.js.map": "/PostSys/static/js/4.6c48c17c.chunk.js.map",
     "index.html": "/PostSys/index.html",
-    "precache-manifest.0380779af4e9451d765a68457ce333f7.js": "/PostSys/precache-manifest.0380779af4e9451d765a68457ce333f7.js",
+    "precache-manifest.503af7c3eb29b608fcdd39f55942c41e.js": "/PostSys/precache-manifest.503af7c3eb29b608fcdd39f55942c41e.js",
     "service-worker.js": "/PostSys/service-worker.js",
-    "static/css/3.624d1f7c.chunk.css.map": "/PostSys/static/css/3.624d1f7c.chunk.css.map",
+    "static/css/4.f33469ed.chunk.css.map": "/PostSys/static/css/4.f33469ed.chunk.css.map",
     "static/css/main.0a509f28.chunk.css.map": "/PostSys/static/css/main.0a509f28.chunk.css.map",
-    "static/js/2.930087fe.chunk.js.LICENSE.txt": "/PostSys/static/js/2.930087fe.chunk.js.LICENSE.txt"
+    "static/js/2.09aa23cf.chunk.js.LICENSE.txt": "/PostSys/static/js/2.09aa23cf.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.c02f6ec0.js",
-    "static/js/2.930087fe.chunk.js",
+    "static/js/runtime-main.237a8f14.js",
+    "static/js/2.09aa23cf.chunk.js",
     "static/css/main.0a509f28.chunk.css",
-    "static/js/main.6a53256e.chunk.js"
+    "static/js/main.76a7f320.chunk.js"
   ]
 }
