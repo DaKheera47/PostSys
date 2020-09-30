@@ -39,12 +39,38 @@ function ItemsContextProvider(props) {
             itemName: "Milk",
             unitPrice: 100,
         },
+        {
+            itemID: 10008,
+            itemName: "Cheetos",
+            unitPrice: 30,
+        },
+        {
+            itemID: 10009,
+            itemName: "Lays",
+            unitPrice: 20,
+        },
+        {
+            itemID: 10010,
+            itemName: "Pencils",
+            unitPrice: 5,
+        },
+        {
+            itemID: 10011,
+            itemName: "Ball Point Pen",
+            unitPrice: 20,
+        },
+        {
+            itemID: 10012,
+            itemName: "Water Bottle (large)",
+            unitPrice: 50,
+        },
+        {
+            itemID: 10013,
+            itemName: "Water Bottle (small)",
+            unitPrice: 30,
+        },
     ]);
-    return (
-        <ItemContext.Provider value={[items, setItems]}>
-            {props.children}
-        </ItemContext.Provider>
-    );
+    return <ItemContext.Provider value={[items, setItems]}>{props.children}</ItemContext.Provider>;
 }
 
 export default ItemsContextProvider;

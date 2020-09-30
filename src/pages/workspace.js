@@ -44,10 +44,20 @@ function Workspace() {
         />
     );
 
-    const onTotalChange = (total) => {
-        console.log(total);
-        setTotal(parseFloat(total.toFixed(2)));
-        setGrandTotal(parseFloat((total * 1.05).toFixed(2)));
+    const onTotalChange = (t) => {
+        // only round to the nearest digit if total over 100
+        if (t >= 100) {
+            setTotal(Math.round(t));
+        } else {
+            setTotal(parseFloat(t.toFixed(2)));
+        }
+
+        // applying gst only when total cost above 5000
+        if (total >= 1000) {
+            setGrandTotal(parseFloat((total * 1.05).toFixed(2)));
+        } else {
+            setGrandTotal(total);
+        }
     };
 
     return (

@@ -17,11 +17,13 @@ function App() {
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route exact path="/">
+                            {/* uncomment line below in production. makes it a protected route */}
                             {/* {!isAuthenticated ? <Home /> : <Redirect to="/workspace" />} */}
                             <Home />
                         </Route>
                         <Route exact path="/workspace">
                             <ItemsContextProvider>
+                                {/* uncomment line below in production. makes it a protected route */}
                                 {/* {isAuthenticated ? <Workspace /> : <Redirect to="/" />} */}
                                 <Workspace />
                             </ItemsContextProvider>

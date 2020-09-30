@@ -12,27 +12,27 @@ function MainTable(props) {
     const [allColumns] = useState([
         {
             recognizer: "itemID",
-            cssClassName: "th-id",
+            cssClassName: "th-id heading",
             display: "Item ID",
         },
         {
             recognizer: "itemName",
-            cssClassName: "th-name",
+            cssClassName: "th-name heading",
             display: "Item Name/Description",
         },
         {
             recognizer: "qty",
-            cssClassName: "th-qty",
+            cssClassName: "th-qty heading",
             display: "Units",
         },
         {
             recognizer: "unitPrice",
-            cssClassName: "th-unitPrice",
+            cssClassName: "th-unitPrice heading",
             display: "Unit Price",
         },
         {
             recognizer: "totalPrice",
-            cssClassName: "th-totalPrice",
+            cssClassName: "th-totalPrice heading",
             display: "Total Price",
         },
     ]);

@@ -38,7 +38,7 @@ function ReceiptBar({ total, grandTotal }) {
 
             <div className="rb-gst-container">
                 <p>Gross Total - Rs. {total}</p>
-                <p>GST - 5%</p>
+                <p>GST - {grandTotal >= 1000 ? "5%" : "0%"}</p>
                 <p>Discount - 0%</p>
             </div>
 
