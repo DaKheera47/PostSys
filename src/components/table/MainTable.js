@@ -63,7 +63,7 @@ function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWork
     return (
         <table className="MainTable">
             <thead>
-                <TableHeader requestSort={requestSort} arrowDirection={sortConfig.direction} />
+                <TableHeader requestSort={requestSort} sortConfig={sortConfig} />
             </thead>
             <tbody>
                 <TableInput

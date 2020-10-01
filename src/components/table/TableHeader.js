@@ -3,8 +3,7 @@ import { motion } from "framer-motion";
 
 import { ArrowDown, ArrowUp } from "../displayComponents/DisplayArrows";
 
-function TableHeader({ requestSort, arrowDirection }) {
-    console.log(arrowDirection);
+function TableHeader({ requestSort, sortConfig }) {
     const allColumns = [
         {
             recognizer: "itemID",
@@ -36,15 +35,22 @@ function TableHeader({ requestSort, arrowDirection }) {
     return (
         <tr className="noselect header">
             {allColumns.map((column) => (
+                // mapping through all columns to make cleaner code
                 <motion.td
                     onClick={() => requestSort(column.recognizer)}
                     className={column.cssClassName}
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                    whileHover={{ scale: 1.025 }}
+                    whileTap={{ scale: 0.975 }}
                     key={column.recognizer}
                 >
                     <span>{column.display}</span>
-                    {arrowDirection === "ascending" ? ArrowUp : ArrowDown}
+                    {/* logic for arrow direction and sorting */}
+                    {sortConfig.direction === "ascending" && sortConfig.key === column.recognizer
+                        ? ArrowDown
+                        : sortConfig.key === column.recognizer &&
+                          sortConfig.direction === "descending"
+                        ? ArrowUp
+                        : null}
                 </motion.td>
             ))}
         </tr>
