@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import MainTable from "../components/MainTable";
+import MainTable from "../components/table/MainTable";
 import ReceiptBar from "../components/ReceiptBar";
 import { motion } from "framer-motion";
 import { ItemContext } from "../contexts/ItemsContext";
