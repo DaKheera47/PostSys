@@ -48,7 +48,10 @@ function TableInput({ currentItems, allItems, setCurrentItems }) {
                     });
                 } else {
                     // checking if item code already exists. if it does, add the quantity to the previous value
-                    currentItems.forEach((item) => {
+                    // duping current items to change
+                    let tempCurrentItems = [...currentItems];
+
+                    tempCurrentItems.forEach((item) => {
                         if (item.itemID === Number(itemIdForm)) {
                             item.qty = item.qty + Number(itemUnitsForm);
                             item.totalPrice = parseFloat(
@@ -59,6 +62,10 @@ function TableInput({ currentItems, allItems, setCurrentItems }) {
                             setItemUnitsForm(1);
                         }
                     });
+
+                    // setting current items to the newly changed current items
+                    // which also updates table rows and receipt bar
+                    setCurrentItems(tempCurrentItems);
                 }
             }
         }

@@ -33,15 +33,12 @@ function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWork
     }, [itemsFromWorkspace]);
 
     let sortDirection;
-    let arrowDirection = "";
 
     const requestSort = (key) => {
         sortDirection = "ascending";
-        arrowDirection = "up";
 
         if (sortConfig.key === key && sortConfig.direction === "ascending") {
             sortDirection = "descending";
-            arrowDirection = "down";
         }
 
         setSortConfig({ key, direction: sortDirection });
