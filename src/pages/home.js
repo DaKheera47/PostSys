@@ -2,14 +2,13 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 // Components
-import ChartSVG from "../components/ChartSVG";
+import { FlagshipSVG, FeaturesSVG } from "../components/displayComponents/SVGs";
 import Nav from "../components/Nav";
 import Demo from "../components/Demo";
 import Hero from "../components/Hero";
 import CommonHero from "../components/CommonHero";
 import Features from "../components/Features";
 import Footer from "../components/Footer";
-import CompletedSVG from "../components/CompletedSVG";
 // stylesheet
 import "../stylesheets/home.css";
 
@@ -58,8 +57,8 @@ function Home() {
                 <Hero className="hero-container" />
                 <Demo className="demo-container" />
 
-                <CompletedSVG />
-                <ChartSVG />
+                {FlagshipSVG}
+                {FeaturesSVG}
                 <Features
                     featuresLeft={[
                         "Upload Item Structure",
