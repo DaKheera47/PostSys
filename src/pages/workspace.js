@@ -10,10 +10,17 @@ function Workspace() {
 
     const [total, setTotal] = useState(0);
     const [grandTotal, setGrandTotal] = useState(0);
+    const [currentItems, setCurrentItems] = useState([]);
 
     useEffect(() => {
         document.title = "Workspace | Postsys";
     }, []);
+
+    const onClickClear = () => {
+        setCurrentItems([]);
+        setGrandTotal(0);
+        setTotal(0);
+    };
 
     const workspaceNav = (
         <Nav
@@ -39,6 +46,7 @@ function Workspace() {
                     cont: "",
                 },
             ]}
+            onClickClear={onClickClear}
             right={[""]}
             img={[""]}
         />
@@ -64,7 +72,12 @@ function Workspace() {
         <>
             {workspaceNav}
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                <MainTable items={items} setItems={setItems} onTotalChange={onTotalChange} />
+                <MainTable
+                    items={items}
+                    setItems={setItems}
+                    onTotalChange={onTotalChange}
+                    currentItems={currentItems}
+                />
                 <ReceiptBar total={total} grandTotal={grandTotal} />
             </motion.div>
         </>

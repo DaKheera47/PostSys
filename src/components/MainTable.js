@@ -1,15 +1,15 @@
-import React, { useMemo, useState, useEffect } from "react";
+import React, { useMemo, useState, useEffect, useRef } from "react";
 import "../stylesheets/maintable.css";
-import { motion } from "framer-motion";
+import { motion, AnimateSharedLayout, AnimatePresence } from "framer-motion";
 
-function MainTable(props) {
-    let { items: allItems, onTotalChange } = props;
+function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWorkspace }) {
     const [totalCost, setTotalCost] = useState(0);
     const [sortConfig, setSortConfig] = useState([...allItems]);
     const [itemIdForm, setItemIdForm] = useState("");
     const [itemUnitsForm, setItemUnitsForm] = useState(1);
-    const [currentItems, setCurrentItems] = useState([]);
-    const [allColumns] = useState([
+    const [currentItems, setCurrentItems] = useState(itemsFromWorkspace);
+    const constraintsRef = useRef(null);
+    const allColumns = [
         {
             recognizer: "itemID",
             cssClassName: "th-id heading",
@@ -35,7 +35,7 @@ function MainTable(props) {
             cssClassName: "th-totalPrice heading",
             display: "Total Price",
         },
-    ]);
+    ];
 
     // Logic for sorting
     let direction;
@@ -95,17 +95,6 @@ function MainTable(props) {
         });
         return currentItems;
     }, [sortConfig, currentItems]);
-
-    // making the rows of items
-    const itemTRS = currentItems.map((item) => (
-        <tr key={item.itemID}>
-            <td className="td-id">{item.itemID}</td>
-            <td className="td-name">{item.itemName}</td>
-            <td className="td-qty">{item.qty}</td>
-            <td className="td-price">Rs. {item.unitPrice}</td>
-            <td className="td-price">Rs. {item.totalPrice}</td>
-        </tr>
-    ));
 
     // logic for form handling
     const handleChange = (e) => {
@@ -172,20 +161,38 @@ function MainTable(props) {
         }
     };
 
+    // send value of totalCost to the workspace component for rendering in the receipt bar
+    useEffect(() => {
+        onTotalChange(totalCost);
+    }, [totalCost, onTotalChange]);
+
     // adding total value to variable as soon as currentItems changes
     useEffect(() => {
-        setTotalCost(0);
-        currentItems.forEach((item) => {
-            setTotalCost((p) => p + item.totalPrice);
-            console.log(item);
-        });
-    }, [currentItems, itemUnitsForm, itemIdForm]);
+        let num = 0;
 
+        currentItems.forEach((item) => {
+            item.totalPrice ? (num += item.totalPrice) : (num += 0);
+        });
+        console.log(`NUM: ${num}`);
+        setTotalCost(num);
+    }, [currentItems]);
+
+    // update value of current items when the current items by the workspace change
     useEffect(() => {
-        if (+totalCost) {
-            onTotalChange(totalCost);
-        }
-    }, [totalCost, onTotalChange]);
+        setCurrentItems(itemsFromWorkspace);
+    }, [itemsFromWorkspace]);
+
+    const listVariant = {
+        visible: { opacity: 1 },
+        hidden: { opacity: 0 },
+        exit: { opacity: 0, x: 0 },
+    };
+
+    const itemVariant = {
+        visible: { opacity: 1, x: 0 },
+        hidden: { opacity: 0, x: -100 },
+        exit: { opacity: 0, x: 0 },
+    };
 
     return (
         <table className="MainTable">
@@ -211,9 +218,10 @@ function MainTable(props) {
                     ))}
                 </tr>
             </thead>
-            <tbody>
+            <tbody ref={constraintsRef}>
                 <tr>
                     <td>
+                        {/* item id input field */}
                         <input
                             type="text"
                             id="IdInput"
@@ -223,8 +231,10 @@ function MainTable(props) {
                             value={itemIdForm}
                         />
                     </td>
+                    {/* placehholder to keep space */}
                     <td className="td-name"></td>
                     <td>
+                        {/* item units input field */}
                         <input
                             type="number"
                             id="UnitsInput"
@@ -235,10 +245,68 @@ function MainTable(props) {
                             value={itemUnitsForm}
                         />
                     </td>
+                    {/* placecholders to keep space */}
                     <td className="td-price"></td>
                     <td className="td-price"></td>
                 </tr>
-                {itemTRS.length !== 0 ? itemTRS : null}
+
+                {/* looping through current items to render rows */}
+                {currentItems.length !== 0 ? (
+                    <AnimatePresence>
+                        <AnimateSharedLayout>
+                            {currentItems.map((item) => (
+                                <motion.tr
+                                    initial="hidden"
+                                    animate="visible"
+                                    exit="exit"
+                                    variants={listVariant}
+                                    key={item.itemID}
+                                    layout
+                                >
+                                    <motion.td className="td-id" variants={itemVariant} exit="exit">
+                                        {item.itemID}
+                                    </motion.td>
+                                    <motion.td
+                                        className="td-name"
+                                        variants={itemVariant}
+                                        exit="exit"
+                                    >
+                                        {item.itemName}
+                                    </motion.td>
+                                    <motion.td
+                                        className="td-qty"
+                                        variants={itemVariant}
+                                        exit="exit"
+                                    >
+                                        {item.qty}
+                                    </motion.td>
+                                    <motion.td
+                                        className="td-price"
+                                        variants={itemVariant}
+                                        exit="exit"
+                                    >
+                                        Rs. {item.unitPrice}
+                                    </motion.td>
+                                    <motion.td
+                                        className="td-price"
+                                        variants={itemVariant}
+                                        exit="exit"
+                                    >
+                                        Rs. {item.totalPrice}
+                                    </motion.td>
+                                </motion.tr>
+                            ))}
+                        </AnimateSharedLayout>
+                    </AnimatePresence>
+                ) : (
+                    <tr>
+                        <td className="td-id"></td>
+                        <td className="td-name"></td>
+                        <td className="td-qty"></td>
+                        <td className="td-price"></td>
+                        <td className="td-price"></td>
+                    </tr>
+                )}
             </tbody>
         </table>
     );

@@ -4,7 +4,7 @@ import "../stylesheets/receiptbar.css";
 import TextTransition, { presets } from "react-text-transition";
 
 function ReceiptBar({ total, grandTotal }) {
-    const [change, setChange] = useState(0);
+    const [change, setChange] = useState();
     const [payment, setPayment] = useState("");
     let pre = "";
 

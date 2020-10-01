@@ -15,7 +15,7 @@ function Nav(props) {
         logoutURL = "https://dakheera47.github.io/PostSys/#/";
     }
 
-    const { left, center, right } = props;
+    const { left, center, right, onClickClear } = props;
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
     return (
@@ -51,9 +51,12 @@ function Nav(props) {
                                     {e.name}
                                 </Scroll>
                             ) : (
-                                <NavLink className="noselect navLink" exact to={e.url}>
+                                <button
+                                    className="noselect navLink"
+                                    onClick={onClickClear ? onClickClear : null}
+                                >
                                     {e.name}
-                                </NavLink>
+                                </button>
                             )}
                         </li>
                     ))}

@@ -39,7 +39,7 @@ function App() {
                 <Suspense fallback={<div>Loading...</div>}>
                     <Switch>
                         <Route exact path="/">
-                            {!isAuthenticated ? <MobileHome /> : <MobileHome />}
+                            {<MobileHome />}
                         </Route>
 
                         <Route>
