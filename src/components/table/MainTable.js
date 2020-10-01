@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useMemo } from "react";
-
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import "../../stylesheets/maintable.css";
 
 import TableHeader from "./TableHeader";
@@ -58,20 +58,30 @@ function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWork
     }, [sortConfig, currentItems]);
 
     return (
-        <table className="MainTable">
-            <thead>
-                <TableHeader requestSort={requestSort} sortConfig={sortConfig} />
-            </thead>
-            <tbody>
-                <TableInput
-                    currentItems={currentItems}
-                    allItems={allItems}
-                    setCurrentItems={setCurrentItems}
-                />
+        <>
+            <ReactHTMLTableToExcel
+                id="test-table-xls-button"
+                className="download-table-xls-button"
+                table="table-to-xls"
+                filename={"Table By PostSys" + Date.now()}
+                sheet="tablexls"
+                buttonText="Download as XLS"
+            />
+            <table className="MainTable" id="table-to-xls">
+                <thead>
+                    <TableHeader requestSort={requestSort} sortConfig={sortConfig} />
+                </thead>
+                <tbody>
+                    <TableInput
+                        currentItems={currentItems}
+                        allItems={allItems}
+                        setCurrentItems={setCurrentItems}
+                    />
 
-                <TableRowGen currentItems={currentItems} />
-            </tbody>
-        </table>
+                    <TableRowGen currentItems={currentItems} />
+                </tbody>
+            </table>
+        </>
     );
 }
 
