@@ -85,8 +85,8 @@ function TableInput({ currentItems, allItems, setCurrentItems }) {
                     type="number"
                     id="UnitsInput"
                     className="unitInput"
-                    min={1}
-                    max={100000}
+                    min="1"
+                    max="100000"
                     onChange={handleChange}
                     onKeyDown={handleKeyDown}
                     value={itemUnitsForm}

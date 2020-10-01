@@ -1,12 +1,10 @@
-import React, { useState, useMemo } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 
-import arrowDown from "../displayComponents/arrowDown";
-import arrowUp from "../displayComponents/arrowUp";
+import { ArrowDown, ArrowUp } from "../displayComponents/DisplayArrows";
 
-function TableHeader({ currentItems, allItems }) {
-    const [sortConfig, setSortConfig] = useState([...allItems]);
-
+function TableHeader({ requestSort, arrowDirection }) {
+    console.log(arrowDirection);
     const allColumns = [
         {
             recognizer: "itemID",
@@ -34,29 +32,6 @@ function TableHeader({ currentItems, allItems }) {
             display: "Total Price",
         },
     ];
-    // memoizing to save resources
-    useMemo(() => {
-        currentItems.sort((a, b) => {
-            if (a[sortConfig.key] < b[sortConfig.key]) {
-                return sortConfig.direction === "ascending" ? -1 : 1;
-            }
-            if (a[sortConfig.key] > b[sortConfig.key]) {
-                return sortConfig.direction === "ascending" ? 1 : -1;
-            }
-            return 0;
-        });
-        return currentItems;
-    }, [sortConfig, currentItems]);
-    // Logic for sorting
-    let direction;
-    // reversing sorting on subsequent clicks
-    const requestSort = (key) => {
-        direction = "ascending";
-        if (sortConfig.key === key && sortConfig.direction === "ascending") {
-            direction = "descending";
-        }
-        setSortConfig({ key, direction });
-    };
 
     return (
         <tr className="noselect header">
@@ -69,12 +44,7 @@ function TableHeader({ currentItems, allItems }) {
                     key={column.recognizer}
                 >
                     <span>{column.display}</span>
-                    {sortConfig.direction === "ascending" && sortConfig.key === column.recognizer
-                        ? arrowDown
-                        : sortConfig.key === column.recognizer &&
-                          sortConfig.direction === "descending"
-                        ? arrowUp
-                        : null}
+                    {arrowDirection === "ascending" ? ArrowUp : ArrowDown}
                 </motion.td>
             ))}
         </tr>

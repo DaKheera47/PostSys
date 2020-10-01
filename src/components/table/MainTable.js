@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
 import "../../stylesheets/maintable.css";
 
@@ -8,6 +8,7 @@ import TableRowGen from "./TableRow";
 
 function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWorkspace }) {
     const [totalCost, setTotalCost] = useState(0);
+    const [sortConfig, setSortConfig] = useState([...allItems]);
     const [currentItems, setCurrentItems] = useState(itemsFromWorkspace);
 
     // send value of totalCost to the workspace component for rendering in the receipt bar
@@ -31,10 +32,38 @@ function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWork
         setCurrentItems(itemsFromWorkspace);
     }, [itemsFromWorkspace]);
 
+    let sortDirection;
+    let arrowDirection = "";
+
+    const requestSort = (key) => {
+        sortDirection = "ascending";
+        arrowDirection = "up";
+
+        if (sortConfig.key === key && sortConfig.direction === "ascending") {
+            sortDirection = "descending";
+            arrowDirection = "down";
+        }
+
+        setSortConfig({ key, direction: sortDirection });
+    };
+
+    useMemo(() => {
+        currentItems.sort((a, b) => {
+            if (a[sortConfig.key] < b[sortConfig.key]) {
+                return sortConfig.direction === "ascending" ? -1 : 1;
+            }
+            if (a[sortConfig.key] > b[sortConfig.key]) {
+                return sortConfig.direction === "ascending" ? 1 : -1;
+            }
+            return 0;
+        });
+        return currentItems;
+    }, [sortConfig, currentItems]);
+
     return (
         <table className="MainTable">
             <thead>
-                <TableHeader allItems={allItems} currentItems={currentItems} />
+                <TableHeader requestSort={requestSort} arrowDirection={sortConfig.direction} />
             </thead>
             <tbody>
                 <TableInput
