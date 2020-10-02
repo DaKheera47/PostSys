@@ -4,7 +4,7 @@ import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import "../stylesheets/receiptbar.css";
 import TextTransition, { presets } from "react-text-transition";
 
-function ReceiptBar({ total, grandTotal, currentItems }) {
+function ReceiptBar({ total, grandTotal, currentItems, onClickCancel }) {
     const [change, setChange] = useState();
     const [payment, setPayment] = useState("");
     let pre = "";
@@ -17,6 +17,10 @@ function ReceiptBar({ total, grandTotal, currentItems }) {
         if (isNumeric(+e.target.value)) {
             setPayment(e.target.value);
         }
+    };
+
+    const handleCancelClick = (e) => {
+        onClickCancel();
     };
 
     useEffect(() => {
@@ -99,7 +103,9 @@ function ReceiptBar({ total, grandTotal, currentItems }) {
                         sheet="tablexls"
                         buttonText="Print"
                     />
-                    <button className="rb-cancel block">Cancel</button>
+                    <button className="rb-cancel block" onClick={handleCancelClick}>
+                        Cancel
+                    </button>
                 </div>
             </div>
         </div>

@@ -17,7 +17,7 @@ function Workspace() {
         document.title = "Workspace | Postsys";
     }, []);
 
-    const onClickClear = () => {
+    const onClickCancel = () => {
         setCurrentItems([]);
         setGrandTotal(0);
         setTotal(0);
@@ -50,7 +50,12 @@ function Workspace() {
                     onTotalChange={onTotalChange}
                     currentItems={currentItems}
                 />
-                <ReceiptBar total={total} grandTotal={grandTotal} currentItems={currentItems} />
+                <ReceiptBar
+                    total={total}
+                    grandTotal={grandTotal}
+                    currentItems={currentItems}
+                    onClickCancel={onClickCancel}
+                />
             </motion.div>
         </>
     );
