@@ -78,7 +78,7 @@ function Workspace() {
                     onTotalChange={onTotalChange}
                     currentItems={currentItems}
                 />
-                <ReceiptBar total={total} grandTotal={grandTotal} />
+                <ReceiptBar total={total} grandTotal={grandTotal} currentItems={currentItems} />
             </motion.div>
         </>
     );

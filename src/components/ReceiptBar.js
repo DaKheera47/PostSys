@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import "../stylesheets/receiptbar.css";
 import TextTransition, { presets } from "react-text-transition";
 
-function ReceiptBar({ total, grandTotal }) {
+function ReceiptBar({ total, grandTotal, currentItems }) {
     const [change, setChange] = useState();
     const [payment, setPayment] = useState("");
     let pre = "";
@@ -32,7 +33,6 @@ function ReceiptBar({ total, grandTotal }) {
                 <TextTransition
                     text={`Rs. ${grandTotal}`}
                     springConfig={{ mass: 1, tension: 120, friction: 14 }}
-                    className="rb-text"
                 />
             </h1>
 
@@ -53,6 +53,7 @@ function ReceiptBar({ total, grandTotal }) {
                     value={payment}
                 />
             </div>
+
             <div className="rb-change-add-container">
                 <AnimatePresence>
                     {change >= 0 ? (pre = "Change - Rs.") : (pre = "Add Rs.")}
@@ -85,11 +86,21 @@ function ReceiptBar({ total, grandTotal }) {
                     )}
                 </AnimatePresence>
             </div>
+
             <div className="rb-print-container">
-                <button className="rb-print-btn default-btn">Print</button>
-                <a href="/" className="block">
-                    Cancel
-                </a>
+                <div className="rb-print-sizer">
+                    <ReactHTMLTableToExcel
+                        id="test-table-xls-button"
+                        className={
+                            currentItems.length === 0 ? "default-btn" : "default-btn-disabled"
+                        }
+                        table="table-to-xls"
+                        filename={"Table By PostSys " + Date.now().toLocaleString()}
+                        sheet="tablexls"
+                        buttonText="Print"
+                    />
+                    <button className="rb-cancel block">Cancel</button>
+                </div>
             </div>
         </div>
     );

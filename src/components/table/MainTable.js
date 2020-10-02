@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useMemo } from "react";
-import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import "../../stylesheets/maintable.css";
 
 import TableHeader from "./TableHeader";
@@ -59,14 +58,6 @@ function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWork
 
     return (
         <>
-            <ReactHTMLTableToExcel
-                id="test-table-xls-button"
-                className="download-table-xls-button"
-                table="table-to-xls"
-                filename={"Table By PostSys " + Date.now().toLocaleString()}
-                sheet="tablexls"
-                buttonText="Download as XLS"
-            />
             <table className="MainTable" id="table-to-xls">
                 <thead>
                     <TableHeader requestSort={requestSort} sortConfig={sortConfig} />
