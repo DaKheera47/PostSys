@@ -4,7 +4,7 @@ import ReactHTMLTableToExcel from "react-html-table-to-excel";
 import "../stylesheets/receiptbar.css";
 import TextTransition, { presets } from "react-text-transition";
 
-function ReceiptBar({ total, grandTotal, currentItems, onClickCancel }) {
+function ReceiptBar({ total, grandTotal, currentItemsLength, onClickCancel }) {
     const [change, setChange] = useState();
     const [payment, setPayment] = useState("");
     let pre = "";
@@ -19,7 +19,8 @@ function ReceiptBar({ total, grandTotal, currentItems, onClickCancel }) {
         }
     };
 
-    const handleCancelClick = (e) => {
+    const handleCancelClick = () => {
+        setPayment(0);
         onClickCancel();
     };
 
@@ -93,16 +94,21 @@ function ReceiptBar({ total, grandTotal, currentItems, onClickCancel }) {
 
             <div className="rb-print-container">
                 <div className="rb-print-sizer">
-                    <ReactHTMLTableToExcel
-                        id="test-table-xls-button"
-                        className={
-                            currentItems.length === 0 ? "default-btn" : "default-btn-disabled"
-                        }
-                        table="table-to-xls"
-                        filename={"Table By PostSys " + Date.now().toLocaleString()}
-                        sheet="tablexls"
-                        buttonText="Print"
-                    />
+                    {currentItemsLength === 0 || change < 0 ? (
+                        <motion.button className="default-btn" disabled={true}>
+                            Change Remaining
+                        </motion.button>
+                    ) : (
+                        <ReactHTMLTableToExcel
+                            id="test-table-xls-button"
+                            className="default-btn"
+                            table="table-to-xls"
+                            filename={"Table By PostSys " + new Date().toLocaleDateString()}
+                            sheet="tablexls"
+                            buttonText="Download"
+                        />
+                    )}
+
                     <button className="rb-cancel block" onClick={handleCancelClick}>
                         Cancel
                     </button>

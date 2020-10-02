@@ -5,10 +5,10 @@ import TableHeader from "./TableHeader";
 import TableInput from "./TableInput";
 import TableRowGen from "./TableRow";
 
-function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWorkspace }) {
+function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentItems }) {
     const [totalCost, setTotalCost] = useState(0);
     const [sortConfig, setSortConfig] = useState([...allItems]);
-    const [currentItems, setCurrentItems] = useState(itemsFromWorkspace);
+    // const [currentItems, setCurrentItems] = useState(itemsFromWorkspace);
 
     // send value of totalCost to the workspace component for rendering in the receipt bar
     useEffect(() => {
@@ -25,11 +25,6 @@ function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWork
 
         setTotalCost(num);
     }, [currentItems]);
-
-    // update value of current items when the current items by the workspace change
-    useEffect(() => {
-        setCurrentItems(itemsFromWorkspace);
-    }, [itemsFromWorkspace]);
 
     let sortDirection;
 

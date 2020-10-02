@@ -49,11 +49,12 @@ function Workspace() {
                     setItems={setItems}
                     onTotalChange={onTotalChange}
                     currentItems={currentItems}
+                    setCurrentItems={setCurrentItems}
                 />
                 <ReceiptBar
                     total={total}
                     grandTotal={grandTotal}
-                    currentItems={currentItems}
+                    currentItemsLength={currentItems.length}
                     onClickCancel={onClickCancel}
                 />
             </motion.div>
