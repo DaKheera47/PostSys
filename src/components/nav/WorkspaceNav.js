@@ -1,11 +1,11 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link as Scroll } from "react-scroll";
 import { useAuth0 } from "@auth0/auth0-react";
 
 import "../../stylesheets/mainnav.css";
+import { NavLink } from "react-router-dom";
 
-function LandingNav() {
+function WorkspaceNav() {
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
     let logoutURL = "";
@@ -17,19 +17,6 @@ function LandingNav() {
         logoutURL = "https://dakheera47.github.io/PostSys/#/";
     }
 
-    const centerItems = [
-        {
-            displayName: "Home",
-            url: "/",
-            container: "hero-container",
-        },
-        {
-            displayName: "Features",
-            url: "/features",
-            container: "feature-container",
-        },
-    ];
-
     return (
         <motion.div
             initial={{ translateY: -100 }}
@@ -37,22 +24,15 @@ function LandingNav() {
             className="nav-container"
         >
             <div className="nav-left-container">
-                <button className="nav-brand">PostSys</button>
+                <NavLink className="nav-brand" to="/">
+                    PostSys
+                </NavLink>
             </div>
 
             <div className="nav-center-container">
-                {centerItems.map((item) => (
-                    <Scroll
-                        key={item.displayName}
-                        className="center-underline nav-center-btn"
-                        to={item.container}
-                        smooth="easeOutQuint"
-                        offset={-100}
-                        duration={700}
-                    >
-                        {item.displayName}
-                    </Scroll>
-                ))}
+                <button className="nav-center-btn center-underline">Projects</button>
+                <button className="nav-center-btn center-underline">Edit</button>
+                <button className="nav-center-btn center-underline">Clear</button>
             </div>
 
             <div className="nav-right-container">
@@ -87,4 +67,4 @@ function LandingNav() {
     );
 }
 
-export default LandingNav;
+export default WorkspaceNav;

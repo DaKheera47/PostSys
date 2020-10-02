@@ -2,6 +2,7 @@
 
 $default-font: 'Montserrat', sans-serif
 $accent-yellow:  #ffbb91
+$accent-orange: #ff8e6e
 $base-purple:   #515070
 
 body 
@@ -21,7 +22,7 @@ code
     background: #515070
 
 ::-webkit-scrollbar-thumb 
-    background: #ff8e6e
+    background: $accent-orange
     border-radius: 15px
 
 input::-webkit-outer-spin-button, input::-webkit-inner-spin-button 
@@ -46,7 +47,9 @@ input[type=number]
     box-shadow: 0 0 1px rgba(0, 0, 0, 0)
     position: relative
     overflow: hidden
-    padding: 10px
+    // padding: 10px
+    height: 50px
+
     &:before
         content: ""
         position: absolute
@@ -54,7 +57,7 @@ input[type=number]
         left: 51%
         right: 51%
         bottom: 0
-        background: #ffbb91
+        background: $accent-yellow
         height: 4px
         transition-property: left, right
         transition-duration: 0.2s
@@ -65,7 +68,7 @@ input[type=number]
 
 .default-btn
     border: none
-    background-color: #ff8e6e
+    background-color: $accent-orange
     color: white
     padding: 15px
     min-width: 150px
@@ -86,7 +89,7 @@ input[type=number]
 
 .default-btn-disabled
     border: none
-    background-color: #ff8e6e
+    background-color: $accent-orange
     color: white
     padding: 15px
     min-width: 150px
@@ -106,8 +109,8 @@ input[type=number]
         transform: scale(0.95)
 
 ::selection 
-    color: #ffbb91
-    background: #515070
+    color: $accent-orange
+    background: $base-purple
 
 ::-moz-selection 
     @extend ::selection

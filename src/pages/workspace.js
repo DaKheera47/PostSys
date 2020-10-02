@@ -3,7 +3,8 @@ import MainTable from "../components/table/MainTable";
 import ReceiptBar from "../components/ReceiptBar";
 import { motion } from "framer-motion";
 import { ItemContext } from "../contexts/ItemsContext";
-import Nav from "../components/Nav";
+// import Nav from "../components/Nav";
+import WorkspaceNav from "../components/nav/WorkspaceNav";
 
 function Workspace() {
     const [items, setItems] = useContext(ItemContext);
@@ -21,36 +22,6 @@ function Workspace() {
         setGrandTotal(0);
         setTotal(0);
     };
-
-    const workspaceNav = (
-        <Nav
-            mode="link"
-            left={["PostSys"]}
-            center={[
-                {
-                    type: "link",
-                    name: "Projects",
-                    url: "/",
-                    cont: "",
-                },
-                {
-                    type: "link",
-                    name: "Edit",
-                    url: "/",
-                    cont: "",
-                },
-                {
-                    type: "link",
-                    name: "Clear",
-                    url: "/",
-                    cont: "",
-                },
-            ]}
-            onClickClear={onClickClear}
-            right={[""]}
-            img={[""]}
-        />
-    );
 
     const onTotalChange = (t) => {
         // only round to the nearest digit if total over 100
@@ -70,7 +41,8 @@ function Workspace() {
 
     return (
         <>
-            {workspaceNav}
+            {/* {workspaceNav} */}
+            <WorkspaceNav />
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <MainTable
                     items={items}
