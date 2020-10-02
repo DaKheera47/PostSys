@@ -3,7 +3,8 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 // Components
 import { FlagshipSVG, FeaturesSVG } from "../components/displayComponents/SVGs";
-import Nav from "../components/Nav";
+// import Nav from "../components/Nav";
+import LandingNav from "../components/nav/LandingNav";
 import Demo from "../components/Demo";
 import Hero from "../components/Hero";
 import CommonHero from "../components/CommonHero";
@@ -17,38 +18,9 @@ function Home() {
         document.title = "Welcome to PostSys";
     }, []);
 
-    const landingPageNav = (
-        <Nav
-            mode="scroll"
-            left={["PostSys"]}
-            center={[
-                {
-                    type: "scroll",
-                    name: "Home",
-                    url: "/",
-                    cont: "hero-container",
-                },
-                {
-                    type: "scroll",
-                    name: "Features",
-                    url: "/features",
-                    cont: "feature-container",
-                },
-                {
-                    type: "link",
-                    name: "Projects",
-                    url: "/workspace",
-                    cont: "feature-container",
-                },
-            ]}
-            right={[""]}
-            img={[""]}
-        />
-    );
-
     return (
         <>
-            {landingPageNav}
+            <LandingNav />
             <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
@@ -59,6 +31,7 @@ function Home() {
 
                 {FlagshipSVG}
                 {FeaturesSVG}
+
                 <Features
                     featuresLeft={[
                         "Upload Item Structure",

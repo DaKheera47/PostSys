@@ -17,13 +17,7 @@ function Demo(props) {
                     See Pricing
                 </a>
 
-                <svg
-                    width="22"
-                    height="33"
-                    viewBox="0 0 22 33"
-                    fill="none"
-                    className="mouse"
-                >
+                <svg width="22" height="33" viewBox="0 0 22 33" fill="none" className="mouse">
                     <rect
                         x="1.5625"
                         y="1.93597"
