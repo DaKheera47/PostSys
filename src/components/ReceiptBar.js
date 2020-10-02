@@ -42,7 +42,7 @@ function ReceiptBar({ total, grandTotal }) {
                 <p>Discount - 0%</p>
             </div>
 
-            <div className="rb-payment-change-container">
+            <div className="rb-payment-container">
                 <input
                     type="number"
                     name="payment"
@@ -52,6 +52,8 @@ function ReceiptBar({ total, grandTotal }) {
                     onChange={handlePaymentInput}
                     value={payment}
                 />
+            </div>
+            <div className="rb-change-add-container">
                 <AnimatePresence>
                     {change >= 0 ? (pre = "Change - Rs.") : (pre = "Add Rs.")}
                     {change >= 0 ? (
@@ -82,6 +84,12 @@ function ReceiptBar({ total, grandTotal }) {
                         </motion.span>
                     )}
                 </AnimatePresence>
+            </div>
+            <div className="rb-print-container">
+                <button className="rb-print-btn default-btn">Print</button>
+                <a href="/" className="block">
+                    Cancel
+                </a>
             </div>
         </div>
     );

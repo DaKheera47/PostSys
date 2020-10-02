@@ -63,7 +63,7 @@ function MainTable({ items: allItems, onTotalChange, currentItems: itemsFromWork
                 id="test-table-xls-button"
                 className="download-table-xls-button"
                 table="table-to-xls"
-                filename={"Table By PostSys" + Date.now()}
+                filename={"Table By PostSys " + Date.now().toLocaleString()}
                 sheet="tablexls"
                 buttonText="Download as XLS"
             />
