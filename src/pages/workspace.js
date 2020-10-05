@@ -3,7 +3,6 @@ import MainTable from "../components/table/MainTable";
 import ReceiptBar from "../components/ReceiptBar";
 import { motion } from "framer-motion";
 import { ItemContext } from "../contexts/ItemsContext";
-// import Nav from "../components/Nav";
 import WorkspaceNav from "../components/nav/WorkspaceNav";
 
 function Workspace() {
@@ -24,7 +23,7 @@ function Workspace() {
         setTotal(0);
     };
 
-    const onTotalChange = (t) => {
+    let onTotalChange = (t) => {
         // only round to the nearest digit if total over 100
         if (t >= 100) {
             setTotal(Math.round(t));

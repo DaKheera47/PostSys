@@ -1,6 +1,5 @@
 import React from "react";
 // import { footerLink } from "react-router-dom";
-import { motion } from "framer-motion";
 import "../stylesheets/footer.css";
 
 function Footer() {

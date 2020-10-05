@@ -8,6 +8,8 @@ import TableRowGen from "./TableRow";
 function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentItems }) {
     const [totalCost, setTotalCost] = useState(0);
     const [sortConfig, setSortConfig] = useState([...allItems]);
+    console.log(currentItems);
+
     // const [currentItems, setCurrentItems] = useState(itemsFromWorkspace);
 
     // send value of totalCost to the workspace component for rendering in the receipt bar
@@ -51,6 +53,38 @@ function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentIte
         return currentItems;
     }, [sortConfig, currentItems]);
 
+    const handleAddUnit = (itemID) => {
+        // duping to not directly mutate state
+        let tempCurrentItems = [...currentItems];
+
+        tempCurrentItems.forEach((item) => {
+            if (item.itemID === itemID) {
+                item.qty += 1;
+                item.totalPrice = parseFloat((item.unitPrice * Number(item.qty)).toFixed(2));
+            }
+        });
+
+        // setting current items to the newly changed current items
+        // which also updates table rows and receipt bar
+        setCurrentItems(tempCurrentItems);
+    };
+
+    const handleRemoveUnit = (itemID) => {
+        // duping to not directly mutate state
+        let tempCurrentItems = [...currentItems];
+
+        tempCurrentItems.forEach((item) => {
+            if (item.itemID === itemID && item.qty > 1) {
+                item.qty -= 1;
+                item.totalPrice = parseFloat((item.unitPrice * Number(item.qty)).toFixed(2));
+            }
+        });
+
+        // setting current items to the newly changed current items
+        // which also updates table rows and receipt bar
+        setCurrentItems(tempCurrentItems);
+    };
+
     return (
         <>
             <table className="MainTable" id="table-to-xls">
@@ -62,9 +96,15 @@ function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentIte
                         currentItems={currentItems}
                         allItems={allItems}
                         setCurrentItems={setCurrentItems}
+                        handleRemoveUnit={handleRemoveUnit}
+                        handleAddUnit={handleAddUnit}
                     />
 
-                    <TableRowGen currentItems={currentItems} />
+                    <TableRowGen
+                        currentItems={currentItems}
+                        handleRemoveUnit={handleRemoveUnit}
+                        handleAddUnit={handleAddUnit}
+                    />
                 </tbody>
             </table>
         </>

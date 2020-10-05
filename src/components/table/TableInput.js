@@ -1,6 +1,7 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 
-function TableInput({ currentItems, allItems, setCurrentItems }) {
+function TableInput({ currentItems, allItems, setCurrentItems, handleRemoveUnit, handleAddUnit }) {
     const [itemIdForm, setItemIdForm] = useState("");
     const [itemUnitsForm, setItemUnitsForm] = useState(1);
     // logic for form handling
