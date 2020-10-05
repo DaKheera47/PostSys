@@ -20,7 +20,7 @@ function ReceiptBar({ total, grandTotal, currentItemsLength, onClickCancel }) {
     };
 
     const handleCancelClick = () => {
-        setPayment(0);
+        setPayment("");
         onClickCancel();
     };
 
