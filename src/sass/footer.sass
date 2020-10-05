@@ -1,9 +1,69 @@
-@use "./nav"
-.sticky-bottom
-    @extend nav
+@use "./index"
+
+.footer-sticky-bottom
     position: absolute
     top: 200vh
+    width: 100%
+    background-color: index.$base-purple
+    height: 70px
+    font-family: index.$default-font
 
-.footer-center
-    @extend .center
-    left: 38vw !important
+    display: flex
+    justify-content: space-between
+    align-items: center
+
+    z-index: 50001
+
+.footer-right-container
+    line-height: 70px
+    width: fit-content
+    height: 70px
+    float: right
+    padding: 0 4vw
+    margin: 0
+    display: flex
+    justify-content: center
+    align-items: center
+
+.footer-left-container
+    line-height: 70px
+    width: fit-content
+    height: 70px
+    float: left
+    padding: 0 4vw
+    margin: 0
+    display: flex
+    justify-content: center
+    align-items: center
+
+.footer-center-container
+    display: inline-flex
+    justify-content: center
+    align-items: center
+    line-height: 55px
+    height: 70px
+    margin-left: 70px
+
+.footer-brand
+    line-height: 70px
+    margin: 0
+    padding: 0
+    color: index.$accent-yellow
+    font-size: 2em
+    font-weight: 700
+    font-family: index.$default-font
+    background-color: index.$base-purple
+    border: none
+    text-decoration: none
+
+.footer-center-btn
+    background-color: index.$base-purple
+    color: index.$accent-yellow
+    border: none
+    text-decoration: none
+    padding: 10px
+    font-size: 18px
+    cursor: pointer
+    font-family: index.$default-font
+    display: inline
+    margin: 0 25px

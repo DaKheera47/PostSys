@@ -53,11 +53,7 @@ function Home() {
                     highlighted="waiting for?"
                     btnText="Start Today!"
                 />
-                <Footer
-                    left={["PoSys"]}
-                    center={["About Us", "Contact Us"]}
-                    right={["Social Medias"]}
-                />
+                <Footer />
             </motion.div>
         </>
     );

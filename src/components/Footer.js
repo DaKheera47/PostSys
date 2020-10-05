@@ -1,58 +1,47 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+// import { footerLink } from "react-router-dom";
+import { motion } from "framer-motion";
 import "../stylesheets/footer.css";
 
-function Footer(props) {
-    const { left, center, right } = props;
+function Footer() {
+    const centerItems = [
+        {
+            displayName: "About",
+            url: "/",
+            container: "",
+        },
+        {
+            displayName: "Contact",
+            url: "",
+            container: "",
+        },
+    ];
+
     return (
-        <footer className="sticky-bottom">
-            <ul>
-                <div className="left">
-                    {left.map((e) => (
-                        <li key={e}>
-                            <NavLink
-                                exact
-                                to="/"
-                                className="heading noselect"
-                                activeClassName="nav-active"
-                            >
-                                {e}
-                            </NavLink>
-                        </li>
-                    ))}
-                </div>
+        <div className="footer-sticky-bottom">
+            <div className="footer-left-container">
+                <button className="footer-brand">PostSys</button>
+            </div>
 
-                <div className="footer-center">
-                    {center.map((e) => (
-                        <li key={e}>
-                            <NavLink
-                                exact
-                                to="/"
-                                className="navLink noselect"
-                                activeClassName="nav-active"
-                            >
-                                {e}
-                            </NavLink>
-                        </li>
-                    ))}
-                </div>
+            <div className="footer-center-container">
+                {centerItems.map((item) => (
+                    <button
+                        key={item.displayName}
+                        className="center-underline footer-center-btn"
+                        to={item.container}
+                        smooth="easeOutQuint"
+                        offset={-100}
+                        duration={700}
+                    >
+                        {item.displayName}
+                    </button>
+                ))}
+            </div>
 
-                <div className="right">
-                    {right.map((e) => (
-                        <li key={e}>
-                            <NavLink
-                                exact
-                                to="/"
-                                className="navLink noselect"
-                                activeClassName="nav-active"
-                            >
-                                {e}
-                            </NavLink>
-                        </li>
-                    ))}
-                </div>
-            </ul>
-        </footer>
+            <div className="footer-right-container">
+                <button className="center-underline footer-center-btn">Social Medias</button>
+            </div>
+        </div>
     );
 }
 

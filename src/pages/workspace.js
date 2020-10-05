@@ -13,6 +13,7 @@ function Workspace() {
     const [grandTotal, setGrandTotal] = useState(0);
     const [currentItems, setCurrentItems] = useState([]);
 
+    // Title upon loading document
     useEffect(() => {
         document.title = "Workspace | Postsys";
     }, []);
