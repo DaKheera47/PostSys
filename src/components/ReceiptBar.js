@@ -63,33 +63,18 @@ function ReceiptBar({ total, grandTotal, currentItemsLength, onClickCancel }) {
             <div className="rb-change-add-container">
                 <AnimatePresence>
                     {change >= 0 ? (pre = "Change - Rs.") : (pre = "Add Rs.")}
-                    {change >= 0 ? (
-                        <motion.span
-                            initial={{ translateY: 25, opacity: 0 }}
-                            animate={{ translateY: 0, opacity: 1 }}
-                            exit={{ translateY: 25, opacity: 0 }}
-                            transition={{ duration: 0.25 }}
-                            className="rb-change-text"
-                        >
-                            <TextTransition
-                                text={`${pre} ${change}`}
-                                springConfig={presets.wobbly}
-                            />
-                        </motion.span>
-                    ) : (
-                        <motion.span
-                            initial={{ translateY: 25, opacity: 0 }}
-                            animate={{ translateY: 0, opacity: 1 }}
-                            transition={{ duration: 0.25 }}
-                            exit={{ translateY: 25, opacity: 0 }}
-                            className="rb-change-text"
-                        >
-                            <TextTransition
-                                text={`${pre} ${Math.abs(change)}`}
-                                springConfig={presets.wobbly}
-                            />
-                        </motion.span>
-                    )}
+                    <motion.span
+                        initial={{ translateY: 25, opacity: 0 }}
+                        animate={{ translateY: 0, opacity: 1 }}
+                        exit={{ translateY: 25, opacity: 0 }}
+                        transition={{ duration: 0.25 }}
+                        className="rb-change-text"
+                    >
+                        <TextTransition
+                            text={`${pre} ${Math.abs(change)}`}
+                            springConfig={presets.wobbly}
+                        />
+                    </motion.span>
                 </AnimatePresence>
             </div>
 
@@ -97,7 +82,7 @@ function ReceiptBar({ total, grandTotal, currentItemsLength, onClickCancel }) {
                 <div className="rb-print-sizer">
                     {currentItemsLength === 0 || change < 0 ? (
                         <motion.button className="default-btn" disabled={true}>
-                            Change Remaining
+                            Print
                         </motion.button>
                     ) : (
                         <ReactHTMLTableToExcel
@@ -106,7 +91,7 @@ function ReceiptBar({ total, grandTotal, currentItemsLength, onClickCancel }) {
                             table="table-to-xls"
                             filename={"Table By PostSys " + new Date().toLocaleDateString()}
                             sheet="tablexls"
-                            buttonText="Download"
+                            buttonText="Print"
                         />
                     )}
 
