@@ -37,7 +37,8 @@ function ReceiptBar({ total, grandTotal, currentItemsLength, onClickCancel }) {
             <h1 className="rb-cost-text">
                 <TextTransition
                     text={`Rs. ${grandTotal}`}
-                    springConfig={{ mass: 1, tension: 120, friction: 14 }}
+                    noOverflow
+                    springConfig={{ mass: 1, tension: 200, friction: 16 }}
                 />
             </h1>
 
