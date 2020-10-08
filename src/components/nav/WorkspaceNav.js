@@ -5,7 +5,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import "../../stylesheets/mainnav.css";
 import { NavLink } from "react-router-dom";
 
-function WorkspaceNav() {
+function WorkspaceNav({ toggleEditMode }) {
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
 
     let logoutURL = "";
@@ -31,7 +31,9 @@ function WorkspaceNav() {
 
             <div className="nav-center-container">
                 <button className="nav-center-btn center-underline">Projects</button>
-                <button className="nav-center-btn center-underline">Edit</button>
+                <button className="nav-center-btn center-underline" onClick={toggleEditMode}>
+                    Edit
+                </button>
                 <button className="nav-center-btn center-underline">Clear</button>
             </div>
 

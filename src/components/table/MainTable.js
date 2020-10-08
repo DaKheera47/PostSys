@@ -10,8 +10,6 @@ function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentIte
     const [sortConfig, setSortConfig] = useState([...allItems]);
     console.log(currentItems);
 
-    // const [currentItems, setCurrentItems] = useState(itemsFromWorkspace);
-
     // send value of totalCost to the workspace component for rendering in the receipt bar
     useEffect(() => {
         onTotalChange(totalCost);

@@ -9,6 +9,7 @@ function Workspace() {
     const [items, setItems] = useContext(ItemContext);
 
     const [total, setTotal] = useState(0);
+    const [editMode, setEditMode] = useState(false);
     const [grandTotal, setGrandTotal] = useState(0);
     const [currentItems, setCurrentItems] = useState([]);
 
@@ -21,6 +22,10 @@ function Workspace() {
         setCurrentItems([]);
         setGrandTotal(0);
         setTotal(0);
+    };
+
+    const toggleEditMode = () => {
+        setEditMode(!editMode);
     };
 
     let onTotalChange = (t) => {
@@ -42,7 +47,7 @@ function Workspace() {
     return (
         <>
             {/* {workspaceNav} */}
-            <WorkspaceNav />
+            <WorkspaceNav toggleEditMode={toggleEditMode} />
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <MainTable
                     items={items}
