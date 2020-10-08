@@ -1,7 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { Link as Scroll } from "react-scroll";
 import { useAuth0 } from "@auth0/auth0-react";
+import { scroller } from "react-scroll";
 
 import "../../stylesheets/mainnav.css";
 
@@ -37,21 +37,24 @@ function LandingNav() {
             className="nav-container"
         >
             <div className="nav-left-container">
-                <button className="nav-brand">PostSys</button>
+                <p className="nav-brand">PostSys</p>
             </div>
 
             <div className="nav-center-container">
                 {centerItems.map((item) => (
-                    <Scroll
+                    <button
                         key={item.displayName}
                         className="center-underline nav-center-btn"
-                        to={item.container}
-                        smooth="easeOutQuint"
-                        offset={-100}
-                        duration={700}
+                        onClick={() => {
+                            scroller.scrollTo(item.container, {
+                                duration: 700,
+                                offset: -95,
+                                smooth: "easeOutQuint",
+                            });
+                        }}
                     >
                         {item.displayName}
-                    </Scroll>
+                    </button>
                 ))}
             </div>
 

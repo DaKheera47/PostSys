@@ -1,5 +1,6 @@
 import React from "react";
 // import { footerLink } from "react-router-dom";
+import { scroller } from "react-scroll";
 import "../stylesheets/footer.css";
 
 function Footer() {
@@ -26,11 +27,14 @@ function Footer() {
                 {centerItems.map((item) => (
                     <button
                         key={item.displayName}
-                        className="center-underline footer-center-btn"
-                        to={item.container}
-                        smooth="easeOutQuint"
-                        offset={-100}
-                        duration={700}
+                        className="center-underline nav-center-btn"
+                        onClick={() => {
+                            scroller.scrollTo(item.container, {
+                                duration: 700,
+                                offset: -95,
+                                smooth: "easeOutQuint",
+                            });
+                        }}
                     >
                         {item.displayName}
                     </button>
