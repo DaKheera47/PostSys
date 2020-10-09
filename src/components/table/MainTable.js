@@ -8,7 +8,44 @@ import TableRowGen from "./TableRow";
 function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentItems }) {
     const [totalCost, setTotalCost] = useState(0);
     const [sortConfig, setSortConfig] = useState([...allItems]);
-    console.log(currentItems);
+    const columns = [
+        {
+            recognizer: "delete",
+            cssClassName: "th-delete heading",
+            display: "Delete",
+            hasSorting: false,
+        },
+        {
+            recognizer: "itemID",
+            cssClassName: "th-id heading",
+            display: "Item ID",
+            isArrowInline: true,
+        },
+        {
+            recognizer: "itemName",
+            cssClassName: "th-name heading",
+            display: "Item Name/Description",
+            isArrowInline: false,
+        },
+        {
+            recognizer: "qty",
+            cssClassName: "th-qty heading",
+            display: "Units",
+            isArrowInline: false,
+        },
+        {
+            recognizer: "unitPrice",
+            cssClassName: "th-unitPrice heading",
+            display: "Unit Price",
+            isArrowInline: false,
+        },
+        {
+            recognizer: "totalPrice",
+            cssClassName: "th-totalPrice heading",
+            display: "Total Price",
+            isArrowInline: false,
+        },
+    ];
 
     // send value of totalCost to the workspace component for rendering in the receipt bar
     useEffect(() => {
@@ -87,7 +124,11 @@ function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentIte
         <>
             <table className="MainTable" id="table-to-xls">
                 <thead>
-                    <TableHeader requestSort={requestSort} sortConfig={sortConfig} />
+                    <TableHeader
+                        requestSort={requestSort}
+                        sortConfig={sortConfig}
+                        allColumns={columns}
+                    />
                 </thead>
                 <tbody>
                     <TableInput
@@ -96,6 +137,9 @@ function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentIte
                         setCurrentItems={setCurrentItems}
                         handleRemoveUnit={handleRemoveUnit}
                         handleAddUnit={handleAddUnit}
+                        sortConfig={sortConfig}
+                        columns={columns}
+                        requestSort={requestSort}
                     />
 
                     <TableRowGen

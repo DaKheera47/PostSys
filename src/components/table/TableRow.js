@@ -2,6 +2,7 @@ import React from "react";
 import { motion, AnimateSharedLayout } from "framer-motion";
 import { HiPlus } from "react-icons/hi";
 import { FiMinus } from "react-icons/fi";
+import { BsTrashFill } from "react-icons/bs";
 
 function TableRow({ currentItems, handleRemoveUnit, handleAddUnit }) {
     const itemVariant = {
@@ -18,6 +19,10 @@ function TableRow({ currentItems, handleRemoveUnit, handleAddUnit }) {
                     key={item.itemID}
                     layout
                 >
+                    <motion.td className="td-delete" variants={itemVariant}>
+                        <BsTrashFill />
+                    </motion.td>
+
                     <motion.td className="td-id" variants={itemVariant}>
                         {item.itemID}
                     </motion.td>

@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import MainTable from "../components/table/MainTable";
-import ReceiptBar from "../components/ReceiptBar";
 import { motion } from "framer-motion";
 import { ItemContext } from "../contexts/ItemsContext";
+import MainTable from "../components/table/MainTable";
+import ReceiptBar from "../components/ReceiptBar";
 import WorkspaceNav from "../components/nav/WorkspaceNav";
 
 function Workspace() {
@@ -46,7 +46,6 @@ function Workspace() {
 
     return (
         <>
-            {/* {workspaceNav} */}
             <WorkspaceNav toggleEditMode={toggleEditMode} />
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <MainTable
@@ -56,6 +55,7 @@ function Workspace() {
                     currentItems={currentItems}
                     setCurrentItems={setCurrentItems}
                 />
+
                 <ReceiptBar
                     total={total}
                     grandTotal={grandTotal}

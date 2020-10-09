@@ -1,19 +1,23 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+import { ArrowDown, ArrowUp } from "../displayComponents/DisplayArrows";
 
-function TableInput({ currentItems, allItems, setCurrentItems, handleRemoveUnit, handleAddUnit }) {
+function TableInput({
+    currentItems,
+    allItems,
+    setCurrentItems,
+    handleAddUnit,
+    sortConfig,
+    requestSort,
+}) {
     const [itemIdForm, setItemIdForm] = useState("");
     const [itemUnitsForm, setItemUnitsForm] = useState(1);
     // logic for form handling
     const handleChange = (e) => {
-        switch (e.target.id) {
-            case "IdInput":
-                setItemIdForm(e.target.value);
-                break;
-
-            case "UnitsInput":
-                setItemUnitsForm(e.target.value);
-                break;
+        if (e.target.id === "IdInput") {
+            setItemIdForm(e.target.value);
+        }
+        if (e.target.id === "UnitsInput") {
+            setItemUnitsForm(e.target.value);
         }
     };
 
@@ -24,7 +28,7 @@ function TableInput({ currentItems, allItems, setCurrentItems, handleRemoveUnit,
                 let count = 1;
 
                 // counting occurances of new item
-                currentItems.map((item) => (item.itemID === Number(itemIdForm) ? count++ : null));
+                currentItems.map((item) => item.itemID === Number(itemIdForm) && count++);
 
                 if (count <= 1) {
                     // changing current display items
@@ -54,11 +58,7 @@ function TableInput({ currentItems, allItems, setCurrentItems, handleRemoveUnit,
 
                     tempCurrentItems.forEach((item) => {
                         if (item.itemID === Number(itemIdForm)) {
-                            item.qty = item.qty + Number(itemUnitsForm);
-                            item.totalPrice = parseFloat(
-                                (item.unitPrice * Number(item.qty)).toFixed(2)
-                            );
-                            // resetting value back to empty after changes
+                            handleAddUnit(item.itemID);
                             setItemIdForm("");
                             setItemUnitsForm(1);
                         }
@@ -72,8 +72,20 @@ function TableInput({ currentItems, allItems, setCurrentItems, handleRemoveUnit,
         }
     };
 
+    // function for arrow direction calculation
+    const getArrowDirection = (recognizer) => {
+        if (sortConfig.direction === "ascending" && sortConfig.key === recognizer) {
+            return ArrowDown;
+        }
+        if (sortConfig.direction === "descending" && sortConfig.key === recognizer) {
+            return ArrowUp;
+        }
+    };
+
     return (
         <tr>
+            {/* placehholder to keep space */}
+            <td className="td-delete"></td>
             <td className="td-id">
                 {/* item id input field */}
                 <input
@@ -86,23 +98,19 @@ function TableInput({ currentItems, allItems, setCurrentItems, handleRemoveUnit,
                 />
             </td>
             {/* placehholder to keep space */}
-            <td className="td-name"></td>
+            <td className="td-itemName">
+                <a onClick={() => requestSort("itemName")}>{getArrowDirection("itemName")}</a>
+            </td>
             <td className="td-qty">
-                {/* item units input field */}
-                <input
-                    type="number"
-                    id="UnitsInput"
-                    className="unitInput"
-                    min="1"
-                    max="100000"
-                    onChange={handleChange}
-                    onKeyDown={handleKeyDown}
-                    value={itemUnitsForm}
-                />
+                <a onClick={() => requestSort("qty")}>{getArrowDirection("qty")}</a>
             </td>
             {/* placecholders to keep space */}
-            <td className="td-price"></td>
-            <td className="td-price"></td>
+            <td className="td-price">
+                <a onClick={() => requestSort("unitPrice")}>{getArrowDirection("unitPrice")}</a>
+            </td>
+            <td className="td-price">
+                <a onClick={() => requestSort("totalPrice")}>{getArrowDirection("totalPrice")}</a>
+            </td>
         </tr>
     );
 }
