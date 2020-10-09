@@ -120,6 +120,15 @@ function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentIte
         setCurrentItems(tempCurrentItems);
     };
 
+    const handleRemoveItem = (item) => {
+        const index = currentItems.indexOf(item);
+        if (index > -1) {
+            let tempCurrentItems = [...currentItems];
+            tempCurrentItems.splice(index, 1);
+            setCurrentItems(tempCurrentItems);
+        }
+    };
+
     return (
         <>
             <table className="MainTable" id="table-to-xls">
@@ -146,6 +155,7 @@ function MainTable({ items: allItems, onTotalChange, setCurrentItems, currentIte
                         currentItems={currentItems}
                         handleRemoveUnit={handleRemoveUnit}
                         handleAddUnit={handleAddUnit}
+                        handleRemoveItem={handleRemoveItem}
                     />
                 </tbody>
             </table>

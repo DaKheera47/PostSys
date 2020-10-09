@@ -98,7 +98,7 @@ function TableInput({
                 />
             </td>
             {/* placehholder to keep space */}
-            <td className="td-itemName">
+            <td className="td-name">
                 <a onClick={() => requestSort("itemName")}>{getArrowDirection("itemName")}</a>
             </td>
             <td className="td-qty">
