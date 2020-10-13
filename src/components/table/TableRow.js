@@ -20,6 +20,7 @@ function TableRow({ currentItems, handleRemoveUnit, handleAddUnit, handleRemoveI
                         exit={{ opacity: 0 }}
                         key={item.itemID}
                         layout
+                        className="TableRow"
                     >
                         <motion.td className="td-delete" variants={itemVariant}>
                             <BsTrashFill
@@ -52,11 +53,11 @@ function TableRow({ currentItems, handleRemoveUnit, handleAddUnit, handleRemoveI
                             />
                         </motion.td>
 
-                        <motion.td className="td-price" variants={itemVariant}>
+                        <motion.td className="td-price td-unitPrice" variants={itemVariant}>
                             Rs. {item.unitPrice}
                         </motion.td>
 
-                        <motion.td className="td-price" variants={itemVariant}>
+                        <motion.td className="td-price td-totalPrice" variants={itemVariant}>
                             Rs. {item.totalPrice}
                         </motion.td>
                     </motion.tr>

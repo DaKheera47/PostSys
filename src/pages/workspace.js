@@ -9,7 +9,6 @@ function Workspace() {
     const [items, setItems] = useContext(ItemContext);
 
     const [total, setTotal] = useState(0);
-    const [editMode, setEditMode] = useState(false);
     const [grandTotal, setGrandTotal] = useState(0);
     const [currentItems, setCurrentItems] = useState([]);
 
@@ -18,14 +17,11 @@ function Workspace() {
         document.title = "Workspace | Postsys";
     }, []);
 
+    // clear all fields and reset to initial state
     const onClickCancel = () => {
         setCurrentItems([]);
         setGrandTotal(0);
         setTotal(0);
-    };
-
-    const toggleEditMode = () => {
-        setEditMode(!editMode);
     };
 
     let onTotalChange = (t) => {
@@ -36,7 +32,7 @@ function Workspace() {
             setTotal(parseFloat(t.toFixed(2)));
         }
 
-        // applying gst only when total cost above 5000
+        // applying gst only when total cost above 1000
         if (total >= 1000) {
             setGrandTotal(parseFloat((total * 1.05).toFixed(2)));
         } else {
@@ -46,7 +42,7 @@ function Workspace() {
 
     return (
         <>
-            <WorkspaceNav toggleEditMode={toggleEditMode} />
+            <WorkspaceNav />
             <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
                 <MainTable
                     items={items}
