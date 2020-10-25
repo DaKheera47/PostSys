@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { scroller } from "react-scroll";
 
 import "../../stylesheets/mainnav.css";
+import { Link } from "react-router-dom";
 
 function LandingNav() {
     const { loginWithRedirect, logout, isAuthenticated, user } = useAuth0();
@@ -83,6 +84,9 @@ function LandingNav() {
                         <button className="nav-sign-up" onClick={() => loginWithRedirect()}>
                             Register
                         </button>
+                        <Link className="nav-sign-up" to="/workspace">
+                            Workspace
+                        </Link>
                     </>
                 )}
             </div>
